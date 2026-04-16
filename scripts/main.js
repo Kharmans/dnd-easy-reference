@@ -466,16 +466,6 @@ const MENU_CATEGORIES = [
 
 //region Hook
 Hooks.once("init", () => {
-  // Enregistrement d'un sous-menu de configuration
-  game.settings.registerMenu("dnd-easy-reference", "menuConfig", {
-    name: game.i18n.localize("DND.SETTINGS.MENU.TITLE"),
-    label: game.i18n.localize("DND.SETTINGS.MENU.LABEL"),
-    hint: game.i18n.localize("DND.SETTINGS.MENU.HINT"),
-    icon: "fas fa-list",
-    type: DnDMenuConfigV2,
-    restricted: true,
-  });
-
   // Elargir ou non la fenêtre item
   game.settings.register("dnd-easy-reference", "widenItemWindows", {
     name: game.i18n.localize("DND.SETTINGS.PROSEGAP.TITLE"),
@@ -505,9 +495,8 @@ Hooks.once("init", () => {
   MENU_CATEGORIES.forEach((category) => {
     game.settings.register("dnd-easy-reference", `show${category}`, {
       name: game.i18n.localize(`DND.MENU.${category.toUpperCase()}.TITLE`),
-      hint: game.i18n.localize(`DND.MENU.${category.toUpperCase()}.HINT`),
       scope: "world",
-      config: false,
+      config: true,
       type: Boolean,
       default: true,
     });

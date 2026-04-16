@@ -52,55 +52,55 @@
     },
     "MENU": {
       "ABILITIES": {
-        "TITLE": "Abilities"
+        "TITLE": "Show Abilities"
       },
       "AREATARGETTYPES": {
-        "TITLE": "Area Target Types"
+        "TITLE": "Show Area Target Types"
       },
       "ATTACK": {
-        "TITLE": "Attack formula"
+        "TITLE": "Show Attack formula"
       },
       "AWARD": {
-        "TITLE": "Awards",
+        "TITLE": "Show Awards",
         "HINT": "Show the award menu in the editor"
       },
       "CHECKS": {
-        "TITLE": "Checks"
+        "TITLE": "Show Checks"
       },
       "CONDITIONTYPES": {
-        "TITLE": "Conditions"
+        "TITLE": "Show Conditions"
       },
       "CREATURETYPES": {
-        "TITLE": "Creature Types"
+        "TITLE": "Show Creature Types"
       },
       "DAMAGE": {
-        "TITLE": "Damage formula"
+        "TITLE": "Show Damage formula"
       },
       "DAMAGETYPES": {
-        "TITLE": "Damage Types"
+        "TITLE": "Show Damage Types"
       },
       "DESCRIPTION": "Select the menus to be displayed in ProseMirror.",
       "DETECTPATTERNS": {
-        "TITLE": "Pattern Detection"
+        "TITLE": "Show Pattern Detection"
       },
       "DIALOG": "Configure enricher",
       "HEAL": {
-        "TITLE": "Healing formula"
+        "TITLE": "Show Healing formula"
       },
       "ITEMPROPERTIES": {
-        "TITLE": "Spell Properties"
+        "TITLE": "Show Spell Properties"
       },
       "LOOKUP": {
-        "TITLE": "Lookup"
+        "TITLE": "Show Lookup"
       },
       "RULES": {
-        "TITLE": "Rules"
+        "TITLE": "Show Rules"
       },
       "SAVES": {
-        "TITLE": "Saving Throws"
+        "TITLE": "Show Saving Throws"
       },
       "SKILLS": {
-        "TITLE": "Skills"
+        "TITLE": "Show Skills"
       },
       "STYLE": {
         "ADVICE": "Advice",
