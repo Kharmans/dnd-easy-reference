@@ -69,7 +69,7 @@
         }
     ],
     "esmodules": [
-        "./scripts/main.js"
+        "./main.mjs"
     ],
     "styles": [
         "./styles/menu-config.css"
@@ -85,7 +85,7 @@
                 "compatibility": {
                     "minimum": "4.0",
                     "verified": "4.0",
-                    "maximum": "5.9"
+                    "maximum": "5.x"
                 }
             }
         ]
