@@ -11,6 +11,10 @@
         {
             "name": "Padhiver",
             "discord": "Padhiver"
+        },
+        {
+            "name": "kgar",
+            "discord": "_kgar"
         }
     ],
     "media": [
@@ -65,8 +69,7 @@
         }
     ],
     "esmodules": [
-        "./scripts/main.js",
-        "./scripts/settings.js"
+        "./scripts/main.js"
     ],
     "styles": [
         "./styles/menu-config.css"
