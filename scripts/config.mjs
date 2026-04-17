@@ -1,5 +1,7 @@
 // @ts-check
 
+/** @import { MenuConfig } from "./_types.mjs" */
+
 import AttackFormulaDialog from "./applications/attack-formula.mjs";
 import AwardFormulaDialog from "./applications/award-formula.mjs";
 import CheckFormulaDialog from "./applications/check-formula.mjs";
@@ -11,44 +13,13 @@ import RuleFormulaDialog from "./applications/rule-formula.mjs";
 import SaveFormulaDialog from "./applications/save-formula.mjs";
 import { insertText } from "./utils.mjs";
 
-/**
- * @typedef {string | string[] | null} MenuDataSource todo document
- */
-
-/**
- * @typedef MenuConfigSetting
- * @property {string} key - the setting key, which is used to save and load the setting.
- * @property {string} name - the localization key for the setting name.
- */
-
-/**
- * @typedef DialogHandlerCallbackOptions
- * @property {string|undefined}    key     The selected sub-menu option key, based on source data, such as "athletics", "lightning", or "str".
- * @property {Record<string, any>|undefined} value   The CONFIG.DND5E value of the selected key. For a skill, this would contain label, reference, etc.
- * @property {any} menu               The ProseMirrorMenu instance.
- */
-
-/**
- * @typedef {(options: DialogHandlerCallbackOptions) => Promise<void>} DialogHandlerCallback
- */
-
-/**
- * @typedef MenuConfig
- * @property {MenuDataSource} source      0 to many keys for checking in CONFIG.DND5E.
- * @property {boolean} reference          Denotes that the source data should be filtered down to entries with a non-nullish reference property.
- *                                        For example, if someone adds a weapon mastery and doesn't supply a reference, then skip it while
- *                                        making menu entries for the other references.
- * @property {DialogHandlerCallback|null} dialogHandler
- * @property {MenuConfigSetting} setting
- */
-
 /** The config data we use to establish settings, determine templates, add menus, ... (todo: finish later) */
 /** @type {Record<string, MenuConfig>} */
 export const MENU_CONFIGS = {
   saves: {
     source: "abilities",
     reference: false,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultAbility: key } : {};
       const text = await SaveFormulaDialog.create(options);
       insertText(text, menu);
@@ -61,7 +32,7 @@ export const MENU_CONFIGS = {
   checks: {
     source: ["abilities", "skills"],
     reference: false,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultType: key } : {};
       const text = await CheckFormulaDialog.create(options);
       insertText(text, menu);
@@ -74,7 +45,7 @@ export const MENU_CONFIGS = {
   damage: {
     source: "damageTypes",
     reference: false,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultType: key } : {};
       const text = await DamageFormulaDialog.create(options);
       insertText(text, menu);
@@ -87,7 +58,7 @@ export const MENU_CONFIGS = {
   attack: {
     source: null,
     reference: false,
-    dialogHandler: async ({ menu }) => {
+    onMenuItemClick: async ({ menu }) => {
       const text = await AttackFormulaDialog.create();
       insertText(text, menu);
     },
@@ -99,7 +70,7 @@ export const MENU_CONFIGS = {
   heal: {
     source: "healingTypes",
     reference: false,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultType: key } : {};
       const text = await HealFormulaDialog.create(options);
       if (text) insertText(text, menu);
@@ -112,7 +83,7 @@ export const MENU_CONFIGS = {
   conditionTypes: {
     source: "conditionTypes",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { initialData: { condition: key } } : {};
       const text = await ConditionFormulaDialog.create(options);
       insertText(text, menu);
@@ -125,7 +96,7 @@ export const MENU_CONFIGS = {
   award: {
     source: null,
     reference: false,
-    dialogHandler: async ({ menu }) => {
+    onMenuItemClick: async ({ menu }) => {
       const text = await AwardFormulaDialog.create();
       insertText(text, menu);
     },
@@ -137,7 +108,7 @@ export const MENU_CONFIGS = {
   lookup: {
     source: null,
     reference: false,
-    dialogHandler: async ({ menu }) => {
+    onMenuItemClick: async ({ menu }) => {
       const text = await LookupFormulaDialog.create();
       insertText(text, menu);
     },
@@ -149,7 +120,7 @@ export const MENU_CONFIGS = {
   rules: {
     source: "rules",
     reference: true,
-    dialogHandler: async ({ menu }) => {
+    onMenuItemClick: async ({ menu }) => {
       const text = await RuleFormulaDialog.create();
       insertText(text, menu);
     },
@@ -161,7 +132,7 @@ export const MENU_CONFIGS = {
   weaponMasteries: {
     source: "weaponMasteries",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       const reference = `weaponMastery=${key}`;
       insertText(`&Reference[${reference}]`, menu);
     },
@@ -173,7 +144,7 @@ export const MENU_CONFIGS = {
   areaTargetTypes: {
     source: "areaTargetTypes",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       insertText(`&Reference[${key}]`, menu);
     },
     setting: {
@@ -184,7 +155,7 @@ export const MENU_CONFIGS = {
   itemProperties: {
     source: "itemProperties",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       insertText(`&Reference[${key}]`, menu);
     },
     setting: {
@@ -195,7 +166,7 @@ export const MENU_CONFIGS = {
   abilities: {
     source: "abilities",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       insertText(`&Reference[${key}]`, menu);
     },
     setting: {
@@ -206,7 +177,7 @@ export const MENU_CONFIGS = {
   skills: {
     source: "skills",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       insertText(`&Reference[${key}]`, menu);
     },
     setting: {
@@ -217,7 +188,7 @@ export const MENU_CONFIGS = {
   damageTypes: {
     source: "damageTypes",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       insertText(`&Reference[${key}]`, menu);
     },
     setting: {
@@ -228,7 +199,7 @@ export const MENU_CONFIGS = {
   creatureTypes: {
     source: "creatureTypes",
     reference: true,
-    dialogHandler: async ({ key, menu }) => {
+    onMenuItemClick: async ({ key, menu }) => {
       insertText(`&Reference[${key}]`, menu);
     },
     setting: {
@@ -240,7 +211,7 @@ export const MENU_CONFIGS = {
   detectPatterns: {
     source: null,
     reference: false,
-    dialogHandler: null,
+    onMenuItemClick: null,
     setting: {
       key: "showdetectPatterns",
       name: "DND.MENU.DETECTPATTERNS.SETTING.NAME",
