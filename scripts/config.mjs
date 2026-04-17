@@ -28,6 +28,7 @@ export const MENU_CONFIGS = {
       key: "showsaves",
       name: "DND.MENU.SAVES.SETTING.NAME",
     },
+    title: "DND.MENU.SAVES.TITLE",
   },
   checks: {
     source: ["abilities", "skills"],
@@ -41,6 +42,7 @@ export const MENU_CONFIGS = {
       key: "showchecks",
       name: "DND.MENU.CHECKS.SETTING.NAME",
     },
+    title: "DND.MENU.CHECKS.TITLE",
   },
   damage: {
     source: "damageTypes",
@@ -54,6 +56,7 @@ export const MENU_CONFIGS = {
       key: "showdamage",
       name: "DND.MENU.DAMAGE.SETTING.NAME",
     },
+    title: "DND.MENU.DAMAGE.TITLE",
   },
   attack: {
     source: null,
@@ -66,6 +69,7 @@ export const MENU_CONFIGS = {
       key: "showattack",
       name: "DND.MENU.ATTACK.SETTING.NAME",
     },
+    title: "DND.MENU.ATTACK.TITLE",
   },
   heal: {
     source: "healingTypes",
@@ -79,6 +83,7 @@ export const MENU_CONFIGS = {
       key: "showheal",
       name: "DND.MENU.HEAL.SETTING.NAME",
     },
+    title: "DND.MENU.HEAL.TITLE",
   },
   conditionTypes: {
     source: "conditionTypes",
@@ -92,6 +97,7 @@ export const MENU_CONFIGS = {
       key: "showconditionTypes",
       name: "DND.MENU.CONDITIONTYPES.SETTING.NAME",
     },
+    title: "DND.MENU.CONDITIONTYPES.TITLE",
   },
   award: {
     source: null,
@@ -104,6 +110,7 @@ export const MENU_CONFIGS = {
       key: "showaward",
       name: "DND.MENU.AWARD.SETTING.NAME",
     },
+    title: "DND.MENU.AWARD.TITLE",
   },
   lookup: {
     source: null,
@@ -116,6 +123,7 @@ export const MENU_CONFIGS = {
       key: "showlookup",
       name: "DND.MENU.LOOKUP.SETTING.NAME",
     },
+    title: "DND.MENU.LOOKUP.TITLE",
   },
   rules: {
     source: "rules",
@@ -128,6 +136,7 @@ export const MENU_CONFIGS = {
       key: "showrules",
       name: "DND.MENU.RULES.SETTING.NAME",
     },
+    title: "DND.MENU.RULES.TITLE",
   },
   weaponMasteries: {
     source: "weaponMasteries",
@@ -140,6 +149,7 @@ export const MENU_CONFIGS = {
       key: "showweaponMasteries",
       name: "DND.MENU.WEAPONMASTERIES.SETTING.NAME",
     },
+    title: "DND.MENU.WEAPONMASTERIES.TITLE",
   },
   areaTargetTypes: {
     source: "areaTargetTypes",
@@ -151,6 +161,7 @@ export const MENU_CONFIGS = {
       key: "showareaTargetTypes",
       name: "DND.MENU.AREATARGETTYPES.SETTING.NAME",
     },
+    title: "DND.MENU.AREATARGETTYPES.TITLE",
   },
   itemProperties: {
     source: "itemProperties",
@@ -162,6 +173,7 @@ export const MENU_CONFIGS = {
       key: "showitemProperties",
       name: "DND.MENU.ITEMPROPERTIES.SETTING.NAME",
     },
+    title: "DND.MENU.ITEMPROPERTIES.TITLE",
   },
   abilities: {
     source: "abilities",
@@ -173,6 +185,7 @@ export const MENU_CONFIGS = {
       key: "showabilities",
       name: "DND.MENU.ABILITIES.SETTING.NAME",
     },
+    title: "DND.MENU.ABILITIES.TITLE",
   },
   skills: {
     source: "skills",
@@ -184,6 +197,7 @@ export const MENU_CONFIGS = {
       key: "showskills",
       name: "DND.MENU.SKILLS.SETTING.NAME",
     },
+    title: "DND.MENU.SKILLS.TITLE",
   },
   damageTypes: {
     source: "damageTypes",
@@ -195,6 +209,7 @@ export const MENU_CONFIGS = {
       key: "showdamageTypes",
       name: "DND.MENU.DAMAGETYPES.SETTING.NAME",
     },
+    title: "DND.MENU.DAMAGETYPES.TITLE",
   },
   creatureTypes: {
     source: "creatureTypes",
@@ -206,6 +221,7 @@ export const MENU_CONFIGS = {
       key: "showcreatureTypes",
       name: "DND.MENU.CREATURETYPES.SETTING.NAME",
     },
+    title: "DND.MENU.CREATURETYPES.TITLE",
   },
   // TODO: Bring this properly into the fold
   detectPatterns: {
@@ -216,6 +232,7 @@ export const MENU_CONFIGS = {
       key: "showdetectPatterns",
       name: "DND.MENU.DETECTPATTERNS.SETTING.NAME",
     },
+    title: "DND.MENU.DETECTPATTERNS.TITLE",
   },
 };
 

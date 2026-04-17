@@ -10,13 +10,13 @@ export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
 
   dropdowns.dndeasyreference = {
     action: "reference",
-    title: '<i class="fa-solid fa-books"></i>', // Icône FontAwesome
+    title: '<i class="fa-solid fa-books"></i>',
     entries: [
       ...getDetectionMenuEntries(),
       ...enabledMenus
         .filter(([_, config]) => !config.source)
         .map(([key, config]) => ({
-          title: game.i18n.localize(`DND.MENU.${key.toUpperCase()}.TITLE`),
+          title: game.i18n.localize(config.title),
           action: `${key}-dialog`,
           cmd: () =>
             config.onMenuItemClick?.({
@@ -28,7 +28,7 @@ export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
       ...enabledMenus
         .filter(([_, config]) => config.source)
         .map(([key, config]) => ({
-          title: game.i18n.localize(`DND.MENU.${key.toUpperCase()}.TITLE`),
+          title: game.i18n.localize(config.title),
           action: key,
           children: createSubMenuEntriesFromSourceData(config, proseMirrorMenu),
         })),

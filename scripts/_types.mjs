@@ -27,4 +27,5 @@
  *                                        making menu entries for the other references.
  * @property {OnMenuItemClickCallback|null} onMenuItemClick
  * @property {MenuConfigSetting} setting
+ * @property {string} title               The text which appears on the menu item. Localization keys are also valid.
  */
