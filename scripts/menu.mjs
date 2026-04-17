@@ -97,7 +97,7 @@ function createStyleEntry(type, config, menu) {
     title: game.i18n.localize(`DND.MENU.STYLE.${type.toUpperCase()}`),
     action: type,
     cmd: () => {
-      const schema = proseMirrorMenu.schema;
+      const schema = menu.schema;
       const divNode = schema.nodes.div.create(
         { _preserve: { class: config.class } },
         [
@@ -127,9 +127,11 @@ function createStyleEntry(type, config, menu) {
           ]),
         ],
       );
-      proseMirrorMenu.view.dispatch(
-        proseMirrorMenu.view.state.tr.replaceSelectionWith(divNode),
+
+      menu.view.dispatch(
+        menu.view.state.tr.replaceSelectionWith(divNode),
       );
+      
       return true;
     },
   };
