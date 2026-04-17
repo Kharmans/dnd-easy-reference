@@ -1,3 +1,8 @@
+/** @import { MenuConfig } from './_types.mjs' */
+
+import { MENU_CONFIGS, STYLE_BLOCKS } from "./config.mjs";
+import { getDetectionMenuEntries } from "./detection/menu-setup.mjs";
+
 export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
   const enabledMenus = Object.entries(MENU_CONFIGS).filter(([_, value]) =>
     game.settings.get("dnd-easy-reference", value.setting.key),
@@ -7,14 +12,14 @@ export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
     action: "reference",
     title: '<i class="fa-solid fa-books"></i>', // Icône FontAwesome
     entries: [
-      ...getDetectionMenuEntries,
+      ...getDetectionMenuEntries(),
       ...enabledMenus
         .filter(([_, config]) => !config.source)
         .map(([key, config]) => ({
           title: game.i18n.localize(`DND.MENU.${key.toUpperCase()}.TITLE`),
           action: `${key}-dialog`,
           cmd: () =>
-            config.onMenuItemClick({
+            config.onMenuItemClick?.({
               key: undefined,
               value: undefined,
               menu: proseMirrorMenu,
@@ -32,7 +37,7 @@ export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
         title: game.i18n.localize("DND.MENU.STYLE.TITLE"),
         action: "styles",
         children: Object.entries(STYLE_BLOCKS).map(([type, config]) =>
-          createStyleEntry(type, config),
+          createStyleEntry(type, config, proseMirrorMenu),
         ),
       },
     ],
@@ -47,7 +52,7 @@ export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
  */
 function createSubMenuEntriesFromSourceData(config, menu) {
   const sources =
-    typeof config.source === "string" ? [config.source] : config.source;
+    (typeof config.source === "string" ? [config.source] : config.source) ?? [];
 
   const entries = [];
 
@@ -60,7 +65,7 @@ function createSubMenuEntriesFromSourceData(config, menu) {
           title: value.label || key,
           action: key,
           cmd: () => {
-            config.onMenuItemClick({
+            config.onMenuItemClick?.({
               key: key,
               menu: menu,
               value: value,
