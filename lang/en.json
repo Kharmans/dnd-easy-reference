@@ -52,55 +52,70 @@
     },
     "MENU": {
       "ABILITIES": {
+        "SETTING.NAME": "Show Abilities",
         "TITLE": "Show Abilities"
       },
       "AREATARGETTYPES": {
-        "TITLE": "Show Area Target Types"
+        "SETTING.NAME": "Show Area Target Types",
+        "TITLE": "Area Target Types"
       },
       "ATTACK": {
-        "TITLE": "Show Attack formula"
+        "SETTING.NAME": "Show Attack formula",
+        "TITLE": "Attack formula"
       },
       "AWARD": {
-        "TITLE": "Show Awards",
-        "HINT": "Show the award menu in the editor"
+        "SETTING.NAME": "Show Awards",
+        "TITLE": "Awards"
       },
       "CHECKS": {
-        "TITLE": "Show Checks"
+        "SETTING.NAME": "Show Checks",
+        "TITLE": "Checks"
       },
       "CONDITIONTYPES": {
-        "TITLE": "Show Conditions"
+        "SETTING.NAME": "Show Conditions",
+        "TITLE": "Conditions"
       },
       "CREATURETYPES": {
-        "TITLE": "Show Creature Types"
+        "SETTING.NAME": "Show Creature Types",
+        "TITLE": "Creature Types"
       },
       "DAMAGE": {
-        "TITLE": "Show Damage formula"
+        "SETTING.NAME": "Show Damage formula",
+        "TITLE": "Damage formula"
       },
       "DAMAGETYPES": {
-        "TITLE": "Show Damage Types"
+        "SETTING.NAME": "Show Damage Types",
+        "TITLE": "Damage Types"
       },
       "DESCRIPTION": "Select the menus to be displayed in ProseMirror.",
       "DETECTPATTERNS": {
-        "TITLE": "Show Pattern Detection"
+        "SETTING.NAME": "Show Pattern Detection",
+        "TITLE": "Pattern Detection"
       },
       "DIALOG": "Configure enricher",
       "HEAL": {
-        "TITLE": "Show Healing formula"
+        "SETTING.NAME": "Show Healing formula",
+        "TITLE": "Healing formula"
       },
       "ITEMPROPERTIES": {
-        "TITLE": "Show Spell Properties"
+        "SETTING.NAME": "Show Spell Properties",
+        "TITLE": "Spell Properties"
       },
       "LOOKUP": {
-        "TITLE": "Show Lookup"
+        "SETTING.NAME": "Show Lookup",
+        "TITLE": "Lookup"
       },
       "RULES": {
-        "TITLE": "Show Rules"
+        "SETTING.NAME": "Show Rules",
+        "TITLE": "Rules"
       },
       "SAVES": {
-        "TITLE": "Show Saving Throws"
+        "SETTING.NAME": "Show Saving Throws",
+        "TITLE": "Saving Throws"
       },
       "SKILLS": {
-        "TITLE": "Show Skills"
+        "SETTING.NAME": "Show Skills",
+        "TITLE": "Skills"
       },
       "STYLE": {
         "ADVICE": "Advice",
@@ -121,6 +136,7 @@
         "TITLE": "Tools"
       },
       "WEAPONMASTERIES": {
+        "SETTING.NAME": "Show Weapon Masteries",
         "TITLE": "Weapon Masteries"
       }
     },
@@ -129,11 +145,6 @@
         "LONG": "Long Format",
         "SHORT": "Short Format",
         "TITLE": "Format"
-      },
-      "MENU": {
-        "HINT": "Configure which items appear in the D&D menu",
-        "LABEL": "Configure Menu Items",
-        "TITLE": "Menu Configuration"
       },
       "PROSEGAP": {
         "HINT": "Reduces the gap to prevent ProseMirror from breaking into two lines when adding D&D menu.",

@@ -1,13 +1,13 @@
-import { patternDefinitions } from "./patterns.js";
-import PatternPromptDialog from "../applications/pattern-prompt-dialog.js";
+import { patternDefinitions } from "./patterns.mjs";
+import PatternPromptDialog from "../applications/pattern-prompt-dialog.mjs";
 
-import HealFormulaDialog from "../applications/heal-formula.js";
-import DamageFormulaDialog from "../applications/damage-formula.js";
-import CheckFormulaDialog from "../applications/check-formula.js";
-import SaveFormulaDialog from "../applications/save-formula.js";
-import AttackFormulaDialog from "../applications/attack-formula.js";
-import ConditionFormulaDialog from "../applications/condition-formula.js";
-import RuleFormulaDialog from "../applications/rule-formula.js";
+import HealFormulaDialog from "../applications/heal-formula.mjs";
+import DamageFormulaDialog from "../applications/damage-formula.mjs";
+import CheckFormulaDialog from "../applications/check-formula.mjs";
+import SaveFormulaDialog from "../applications/save-formula.mjs";
+import AttackFormulaDialog from "../applications/attack-formula.mjs";
+import ConditionFormulaDialog from "../applications/condition-formula.mjs";
+import RuleFormulaDialog from "../applications/rule-formula.mjs";
 
 // State to track the ongoing scan process
 let currentScanState = {
