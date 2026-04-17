@@ -1,4 +1,7 @@
 import { initSettings } from "./scripts/settings.mjs";
+import { addEasyReferenceMenu } from "./scripts/menu.mjs";
+
+const Hooks = foundry.helpers.Hooks;
 
 Hooks.once("init", () => {
   initSettings();
