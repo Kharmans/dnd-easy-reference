@@ -1,8 +1,7 @@
 # Symlinked content for intellisense
-symlink-foundry-config.yaml
+symlink-config.yaml
 foundry
-symlink-dnd5e-config.yaml
-dnd5e
+symlink-config.yaml
 
 # Logs
 logs
