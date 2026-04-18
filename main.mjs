@@ -23,7 +23,7 @@ Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
     // Create menu items
     .map(([key, value]) => ({
       title: game.i18n.localize(value.title),
-      action: `${key}-menu-item`,
+      action: `${key.slugify()}-menu-item`,
       cmd: value.onMenuItemClick
         ? () => value.onMenuItemClick?.(proseMirrorMenu)
         : undefined,
@@ -32,7 +32,7 @@ Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
         : value.items
       )?.map((item) => ({
         title: item.title,
-        action: `${key}-${item.key}-sub-menu-item`,
+        action: `${key.slugify()}-${item.key.slugify()}-sub-menu-item`,
         cmd: item.onMenuItemClick
           ? () => item.onMenuItemClick?.(proseMirrorMenu)
           : undefined,
