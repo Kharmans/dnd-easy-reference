@@ -17,7 +17,7 @@ import { insertText } from "./utils.mjs";
 /** @type {Record<string, MenuConfig>} */
 export const MENU_CONFIGS = {
   saves: {
-    source: "abilities",
+    source: null,
     reference: false,
     onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultAbility: key } : {};
@@ -31,7 +31,7 @@ export const MENU_CONFIGS = {
     title: "DND.MENU.SAVES.TITLE",
   },
   checks: {
-    source: ["abilities", "skills"],
+    source: null,
     reference: false,
     onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultType: key } : {};
@@ -45,7 +45,7 @@ export const MENU_CONFIGS = {
     title: "DND.MENU.CHECKS.TITLE",
   },
   damage: {
-    source: "damageTypes",
+    source: null,
     reference: false,
     onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultType: key } : {};
@@ -72,7 +72,7 @@ export const MENU_CONFIGS = {
     title: "DND.MENU.ATTACK.TITLE",
   },
   heal: {
-    source: "healingTypes",
+    source: null,
     reference: false,
     onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { defaultType: key } : {};
@@ -86,7 +86,7 @@ export const MENU_CONFIGS = {
     title: "DND.MENU.HEAL.TITLE",
   },
   conditionTypes: {
-    source: "conditionTypes",
+    source: null,
     reference: true,
     onMenuItemClick: async ({ key, menu }) => {
       const options = key ? { initialData: { condition: key } } : {};
@@ -126,7 +126,7 @@ export const MENU_CONFIGS = {
     title: "DND.MENU.LOOKUP.TITLE",
   },
   rules: {
-    source: "rules",
+    source: null,
     reference: true,
     onMenuItemClick: async ({ menu }) => {
       const text = await RuleFormulaDialog.create();
