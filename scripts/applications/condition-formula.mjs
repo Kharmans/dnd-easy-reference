@@ -7,7 +7,9 @@ const { StringField, BooleanField } = foundry.data.fields;
  * @property {boolean} apply      Indique si le bouton appliquer doit être affiché.
  */
 
-export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(ApplicationV2) {
+export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
+  ApplicationV2,
+) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["condition-formula-dialog"],
@@ -23,8 +25,8 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
     },
     window: {
       title: "DND.MENU.DIALOG",
-      contentClasses: ["standard-form"]
-    }
+      contentClasses: ["standard-form"],
+    },
   };
 
   /* -------------------------------------------------- */
@@ -36,8 +38,8 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
-    }
-  }
+    },
+  };
 
   /* -------------------------------------------------- */
 
@@ -86,30 +88,32 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
     const conditionChoices = Object.entries(CONFIG.DND5E.conditionTypes ?? {})
       .filter(([key, data]) => data?.reference)
       .reduce((acc, [key, data]) => {
-        acc[key] = game.i18n.localize(data.label ?? key);
+        // Account for label prop name change over time. Easy compatibility.
+        acc[key] = game.i18n.localize(data.label ?? data.name ?? key);
         return acc;
       }, {});
-
 
     context.condition = {
       field: this.#model.schema.getField("condition"),
       value: this.#model.condition,
       choices: conditionChoices,
       label: game.i18n.localize("DND.MENU.CONDITIONTYPES.TITLE"),
-      placeholder: game.i18n.localize("DND.DIALOG.PLACEHOLDER")
+      placeholder: game.i18n.localize("DND.DIALOG.PLACEHOLDER"),
     };
 
     context.apply = {
       field: this.#model.schema.getField("apply"),
       value: this.#model.apply,
-      label: game.i18n.localize("DND.DIALOG.APPLY")
+      label: game.i18n.localize("DND.DIALOG.APPLY"),
     };
 
-    context.buttons = [{
-      type: "submit",
-      icon: "fa-solid fa-check",
-      label: game.i18n.localize("DND.DIALOG.CONFIRM"),
-    }];
+    context.buttons = [
+      {
+        type: "submit",
+        icon: "fa-solid fa-check",
+        label: game.i18n.localize("DND.DIALOG.CONFIRM"),
+      },
+    ];
 
     return context;
   }
@@ -133,7 +137,9 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
         break;
       case "submit":
         if (!this.#model.condition) {
-          ui.notifications.warn(game.i18n.localize("DND.DIALOG.CONDITION.WARN_NO_CONDITION"));
+          ui.notifications.warn(
+            game.i18n.localize("DND.DIALOG.CONDITION.WARN_NO_CONDITION"),
+          );
           return;
         }
         this.#config = this.#text;
@@ -168,11 +174,15 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
       application.#model.updateSource(options.initialData);
     }
     application.render({ force: true });
-    application.addEventListener("close", (event) => {
-      if (application.config === null) {
-        resolve(null);
-      }
-    }, { once: true });
+    application.addEventListener(
+      "close",
+      (event) => {
+        if (application.config === null) {
+          resolve(null);
+        }
+      },
+      { once: true },
+    );
     return promise;
   }
 }
@@ -197,13 +207,13 @@ class ConditionFormulaModel extends foundry.abstract.DataModel {
         blank: false,
         initial: initialCondition,
         choices: conditionIds,
-        label: "DND.CONDITIONTYPES.TITLE"
+        label: "DND.CONDITIONTYPES.TITLE",
       }),
       apply: new BooleanField({
         required: true,
         initial: true,
-        label: "DND.DIALOG.CONFIRM"
-      })
+        label: "DND.DIALOG.CONFIRM",
+      }),
     };
   }
 }

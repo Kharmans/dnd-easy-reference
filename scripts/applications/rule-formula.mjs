@@ -168,7 +168,7 @@ class RuleFormulaModel extends foundry.abstract.DataModel {
         blank: true,
         choices: () => {
           return Object.keys(rules).reduce((acc, key) => {
-            acc[key] = rules[key]?.label || key;
+            acc[key] = rules[key]?.label ?? key;
             return acc;
           }, {});
         },

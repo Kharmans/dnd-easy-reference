@@ -1,12 +1,10 @@
-// @ts-check
-
 /** @import { SubMenuItem } from '../_types.mjs' */
 
 import { startPatternScan } from "./pattern-scanner.mjs";
 import { insertText } from "../utils.mjs";
 
 /**
- *
+ * Gets the submenu items for the Pattern Detection menu.
  * @returns {SubMenuItem[]}
  */
 export function getDetectionSubMenuItems() {
@@ -95,5 +93,5 @@ export function getDetectionSubMenuItems() {
       onMenuItemClick: (menu) =>
         startPatternScan(menu, "creatureType", insertText),
     },
-  ];
+  ].sort((a, b) => a.title.localeCompare(b.title));
 }
