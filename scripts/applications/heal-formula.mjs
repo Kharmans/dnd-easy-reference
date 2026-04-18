@@ -169,7 +169,7 @@ export default class HealFormulaDialog extends HandlebarsApplicationMixin(
 }
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class HealFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

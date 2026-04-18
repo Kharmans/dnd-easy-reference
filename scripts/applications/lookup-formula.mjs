@@ -183,7 +183,7 @@ export default class LookupFormulaDialog extends HandlebarsApplicationMixin(Appl
 }
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class LookupFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

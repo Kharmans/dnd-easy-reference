@@ -198,7 +198,7 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	}
 
 	/**
-	 * Crée une instance de cette application.
+	 * Creates an instance of the application.
 	 * @param {object} [options]            Options.
 	 * @returns {Promise<string|null>}      Le texte, ou null.
 	 */
@@ -242,7 +242,7 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 }
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class CheckFormulaModel extends foundry.abstract.DataModel {
 	/** @inheritdoc */

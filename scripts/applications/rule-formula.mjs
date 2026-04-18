@@ -102,7 +102,7 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Gestionnaires d'événements                     */
+  /* Event Handlers                                     */
   /* -------------------------------------------------- */
 
   /**
@@ -152,7 +152,7 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
 /* -------------------------------------------------- */
 
 /**
- * Modèle de données utilitaire. */
+ * The data model representing the form's data. */
 class RuleFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
   static defineSchema() {

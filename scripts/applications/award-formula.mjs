@@ -140,7 +140,7 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   }
 
   /* -------------------------------------------------- */
-  /* Gestionnaires d'événements                       */
+  /* Event Handlers                                     */
   /* -------------------------------------------------- */
 
   /**
@@ -193,7 +193,7 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
 /* -------------------------------------------------- */
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class AwardFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

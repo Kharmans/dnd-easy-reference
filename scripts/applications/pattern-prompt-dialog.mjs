@@ -36,14 +36,11 @@ export default class PatternPromptDialog extends HandlebarsApplicationMixin(
 
   static PARTS = {
     form: {
-      id: "form",
       template:
         "modules/dnd-easy-reference/templates/detection/pattern-prompt.hbs",
     },
     footer: {
-      id: "footer",
-      template:
-        "modules/dnd-easy-reference/templates/detection/pattern-prompt-buttons.hbs",
+      template: "templates/generic/form-footer.hbs",
     },
   };
 
@@ -58,28 +55,31 @@ export default class PatternPromptDialog extends HandlebarsApplicationMixin(
           game.i18n.localize("DND.DETECT.PROMPT_CONFIRM") ||
           "Convert this text?",
         textToSelect: this.data.textToSelect,
-        // ADDED WARNING TEXT
         warningText:
           game.i18n.localize("DND.DETECT.PROMPT_WARNING") ||
           "Warning: Verify selection before confirming.",
-        buttons: {
-          cancel: {
-            icon: '<i class="fas fa-times"></i>',
+        buttons: [
+          {
+            type: "button",
+            icon: 'fas fa-times"',
             label:
               game.i18n.localize("DND.DETECT.BUTTON_CANCEL") || "Cancel Scan",
-            classes: "",
+            action: "cancel",
           },
-          skip: {
-            icon: '<i class="fas fa-forward"></i>',
+          {
+            type: "button",
+            icon: "fas fa-forward",
             label: game.i18n.localize("DND.DETECT.BUTTON_SKIP") || "Skip",
-            classes: "",
+            action: "skip",
           },
-          confirm: {
-            icon: '<i class="fas fa-check"></i>',
+          {
+            type: "button",
+            icon: "fas fa-check",
             label: game.i18n.localize("DND.DETECT.BUTTON_CONFIRM") || "Confirm",
             classes: "default",
+            action: "confirm",
           },
-        },
+        ],
       };
       return context;
     } catch (err) {

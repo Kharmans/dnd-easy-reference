@@ -149,7 +149,7 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Gestionnaires d'événements                     */
+  /* Event Handlers                                     */
   /* -------------------------------------------------- */
 
   /**
@@ -257,7 +257,7 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
 /* -------------------------------------------------- */
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class DamageFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

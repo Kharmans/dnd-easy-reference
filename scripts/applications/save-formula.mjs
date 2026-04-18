@@ -211,7 +211,7 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
 }
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class SaveFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

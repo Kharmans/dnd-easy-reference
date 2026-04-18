@@ -1,14 +1,14 @@
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
-const { BooleanField, SchemaField, StringField } = foundry.data.fields;
+const { BooleanField, StringField } = foundry.data.fields;
 
 /**
  * @typedef {object} AttackConfig
- * @property {string} formula     La formule d'attaque.
- * @property {boolean} extended   Indique si les informations étendues doivent être affichées.
+ * @property {string} formula     The attack formula.
+ * @property {boolean} extended   Indicates whether extended information should be displayed.
  */
 
 export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
-  ApplicationV2
+  ApplicationV2,
 ) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -44,7 +44,7 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Modèle de données pour les données du dialogue.
+   * Model for dialogue data.
    * @type {AttackFormulaModel}
    */
   #model = new AttackFormulaModel();
@@ -112,16 +112,16 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Gestionnaires d'événements                     */
+  /* Event Handlers                                     */
   /* -------------------------------------------------- */
 
   /**
-   * Gère la soumission du formulaire.
+   * Updates model source data on change, and apply resulting form on submit.
    * @this {AttackFormulaDialog}
-   * @param {SubmitEvent} event             L'événement.
-   * @param {HTMLFormElement} form          Le formulaire.
-   * @param {FormDataExtended} formData     Les données.
-   * @param {object} submitOptions          Les options.
+   * @param {SubmitEvent} event
+   * @param {HTMLFormElement} form
+   * @param {FormDataExtended} formData
+   * @param {object} submitOptions
    */
   static handleFormSubmit(event, form, formData, submitOptions) {
     switch (event.type) {
@@ -136,21 +136,27 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Crée une instance de cette application.
+   * Creates an instance of the application.
    * @param {object} [options]            Options.
    * @returns {Promise<string|null>}      Le texte, ou null.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
-    //Overrides default data if initial data is found
+
     if (options.initialData) {
       const dataToApply = {
         formula: options.initialData.formula,
         extended: options.initialData.extended,
       };
-      if (dataToApply.formula === undefined) delete dataToApply.formula;
-      if (dataToApply.extended === undefined) delete dataToApply.extended;
+
+      if (dataToApply.formula === undefined) {
+        delete dataToApply.formula;
+      }
+
+      if (dataToApply.extended === undefined) {
+        delete dataToApply.extended;
+      }
 
       application.#model.updateSource(dataToApply);
     }
@@ -165,7 +171,7 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
 /* -------------------------------------------------- */
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class AttackFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
