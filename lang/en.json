@@ -52,69 +52,69 @@
     },
     "MENU": {
       "ABILITIES": {
-        "SETTING.NAME": "Show Abilities",
+        "SETTING_NAME": "Show Abilities",
         "TITLE": "Show Abilities"
       },
       "AREATARGETTYPES": {
-        "SETTING.NAME": "Show Area Target Types",
+        "SETTING_NAME": "Show Area Target Types",
         "TITLE": "Area Target Types"
       },
       "ATTACK": {
-        "SETTING.NAME": "Show Attack formula",
+        "SETTING_NAME": "Show Attack formula",
         "TITLE": "Attack formula"
       },
       "AWARD": {
-        "SETTING.NAME": "Show Awards",
+        "SETTING_NAME": "Show Awards",
         "TITLE": "Awards"
       },
       "CHECKS": {
-        "SETTING.NAME": "Show Checks",
+        "SETTING_NAME": "Show Checks",
         "TITLE": "Checks"
       },
       "CONDITIONTYPES": {
-        "SETTING.NAME": "Show Conditions",
+        "SETTING_NAME": "Show Conditions",
         "TITLE": "Conditions"
       },
       "CREATURETYPES": {
-        "SETTING.NAME": "Show Creature Types",
+        "SETTING_NAME": "Show Creature Types",
         "TITLE": "Creature Types"
       },
       "DAMAGE": {
-        "SETTING.NAME": "Show Damage formula",
+        "SETTING_NAME": "Show Damage formula",
         "TITLE": "Damage formula"
       },
       "DAMAGETYPES": {
-        "SETTING.NAME": "Show Damage Types",
+        "SETTING_NAME": "Show Damage Types",
         "TITLE": "Damage Types"
       },
       "DESCRIPTION": "Select the menus to be displayed in ProseMirror.",
       "DETECTPATTERNS": {
-        "SETTING.NAME": "Show Pattern Detection",
+        "SETTING_NAME": "Show Pattern Detection",
         "TITLE": "Pattern Detection"
       },
       "DIALOG": "Configure enricher",
       "HEAL": {
-        "SETTING.NAME": "Show Healing formula",
+        "SETTING_NAME": "Show Healing formula",
         "TITLE": "Healing formula"
       },
       "ITEMPROPERTIES": {
-        "SETTING.NAME": "Show Spell Properties",
+        "SETTING_NAME": "Show Spell Properties",
         "TITLE": "Spell Properties"
       },
       "LOOKUP": {
-        "SETTING.NAME": "Show Lookup",
+        "SETTING_NAME": "Show Lookup",
         "TITLE": "Lookup"
       },
       "RULES": {
-        "SETTING.NAME": "Show Rules",
+        "SETTING_NAME": "Show Rules",
         "TITLE": "Rules"
       },
       "SAVES": {
-        "SETTING.NAME": "Show Saving Throws",
+        "SETTING_NAME": "Show Saving Throws",
         "TITLE": "Saving Throws"
       },
       "SKILLS": {
-        "SETTING.NAME": "Show Skills",
+        "SETTING_NAME": "Show Skills",
         "TITLE": "Skills"
       },
       "STYLE": {
@@ -126,7 +126,7 @@
         "QUEST": "Quest",
         "QUEST_CONTENT": "This is a quest block.",
         "QUEST_TITLE": "Quest",
-        "SETTING.NAME": "Show Styles",
+        "SETTING_NAME": "Show Styles",
         "TITLE": "Styles",
         "TREASURE": "Treasure",
         "TREASURE_CONTENT": "This is a treasure block.",
@@ -137,7 +137,7 @@
         "TITLE": "Tools"
       },
       "WEAPONMASTERIES": {
-        "SETTING.NAME": "Show Weapon Masteries",
+        "SETTING_NAME": "Show Weapon Masteries",
         "TITLE": "Weapon Masteries"
       }
     },

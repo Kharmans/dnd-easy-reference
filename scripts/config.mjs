@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @import { MenuConfig } from "./_types.mjs" */
+/** @import { MenuConfigItem } from "./_types.mjs" */
 
 import AttackFormulaDialog from "./applications/attack-formula.mjs";
 import AwardFormulaDialog from "./applications/award-formula.mjs";
@@ -12,257 +12,224 @@ import LookupFormulaDialog from "./applications/lookup-formula.mjs";
 import RuleFormulaDialog from "./applications/rule-formula.mjs";
 import SaveFormulaDialog from "./applications/save-formula.mjs";
 import { insertText } from "./utils.mjs";
+import { createReferenceSubMenuEntriesFromSourceData } from "./reference.mjs";
+import { getDetectionSubMenuItems } from "./detection/menu-setup.mjs";
+import { getStyleMenuSubItems } from "./style-blocks/menu-setup.mjs";
 
-/** The config data we use to establish settings, determine templates, add menus, ... (todo: finish later) */
-/** @type {Record<string, MenuConfig>} */
-export const MENU_CONFIGS = {
+/** @type {Record<string, MenuConfigItem>} */
+export const MENU_CONFIG_ITEMS = {
   saves: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ key, menu }) => {
-      const options = key ? { defaultAbility: key } : {};
-      const text = await SaveFormulaDialog.create(options);
-      insertText(text, menu);
-    },
+    title: "DND.MENU.SAVES.TITLE",
     setting: {
       key: "showsaves",
-      name: "DND.MENU.SAVES.SETTING.NAME",
+      name: "DND.MENU.SAVES.SETTING_NAME",
     },
-    title: "DND.MENU.SAVES.TITLE",
+    onMenuItemClick: async (menu) => {
+      const text = await SaveFormulaDialog.create();
+      insertText(text, menu);
+    },
   },
   checks: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ key, menu }) => {
-      const options = key ? { defaultType: key } : {};
-      const text = await CheckFormulaDialog.create(options);
+    onMenuItemClick: async (menu) => {
+      const text = await CheckFormulaDialog.create();
       insertText(text, menu);
     },
     setting: {
       key: "showchecks",
-      name: "DND.MENU.CHECKS.SETTING.NAME",
+      name: "DND.MENU.CHECKS.SETTING_NAME",
     },
     title: "DND.MENU.CHECKS.TITLE",
   },
-  damage: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ key, menu }) => {
-      const options = key ? { defaultType: key } : {};
-      const text = await DamageFormulaDialog.create(options);
-      insertText(text, menu);
-    },
-    setting: {
-      key: "showdamage",
-      name: "DND.MENU.DAMAGE.SETTING.NAME",
-    },
-    title: "DND.MENU.DAMAGE.TITLE",
-  },
   attack: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ menu }) => {
+    onMenuItemClick: async (menu) => {
       const text = await AttackFormulaDialog.create();
       insertText(text, menu);
     },
     setting: {
       key: "showattack",
-      name: "DND.MENU.ATTACK.SETTING.NAME",
+      name: "DND.MENU.ATTACK.SETTING_NAME",
     },
     title: "DND.MENU.ATTACK.TITLE",
   },
+  damage: {
+    onMenuItemClick: async (menu) => {
+      const text = await DamageFormulaDialog.create();
+      insertText(text, menu);
+    },
+    setting: {
+      key: "showdamage",
+      name: "DND.MENU.DAMAGE.SETTING_NAME",
+    },
+    title: "DND.MENU.DAMAGE.TITLE",
+  },
   heal: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ key, menu }) => {
-      const options = key ? { defaultType: key } : {};
-      const text = await HealFormulaDialog.create(options);
+    onMenuItemClick: async (menu) => {
+      const text = await HealFormulaDialog.create();
       if (text) insertText(text, menu);
     },
     setting: {
       key: "showheal",
-      name: "DND.MENU.HEAL.SETTING.NAME",
+      name: "DND.MENU.HEAL.SETTING_NAME",
     },
     title: "DND.MENU.HEAL.TITLE",
   },
   conditionTypes: {
-    source: null,
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      const options = key ? { initialData: { condition: key } } : {};
-      const text = await ConditionFormulaDialog.create(options);
+    onMenuItemClick: async (menu) => {
+      const text = await ConditionFormulaDialog.create();
       insertText(text, menu);
     },
     setting: {
       key: "showconditionTypes",
-      name: "DND.MENU.CONDITIONTYPES.SETTING.NAME",
+      name: "DND.MENU.CONDITIONTYPES.SETTING_NAME",
     },
     title: "DND.MENU.CONDITIONTYPES.TITLE",
   },
   award: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ menu }) => {
+    onMenuItemClick: async (menu) => {
       const text = await AwardFormulaDialog.create();
       insertText(text, menu);
     },
     setting: {
       key: "showaward",
-      name: "DND.MENU.AWARD.SETTING.NAME",
+      name: "DND.MENU.AWARD.SETTING_NAME",
     },
     title: "DND.MENU.AWARD.TITLE",
   },
   lookup: {
-    source: null,
-    reference: false,
-    onMenuItemClick: async ({ menu }) => {
+    onMenuItemClick: async (menu) => {
       const text = await LookupFormulaDialog.create();
       insertText(text, menu);
     },
     setting: {
       key: "showlookup",
-      name: "DND.MENU.LOOKUP.SETTING.NAME",
+      name: "DND.MENU.LOOKUP.SETTING_NAME",
     },
     title: "DND.MENU.LOOKUP.TITLE",
   },
   rules: {
-    source: null,
-    reference: true,
-    onMenuItemClick: async ({ menu }) => {
+    onMenuItemClick: async (menu) => {
       const text = await RuleFormulaDialog.create();
       insertText(text, menu);
     },
     setting: {
       key: "showrules",
-      name: "DND.MENU.RULES.SETTING.NAME",
+      name: "DND.MENU.RULES.SETTING_NAME",
     },
     title: "DND.MENU.RULES.TITLE",
   },
   weaponMasteries: {
-    source: "weaponMasteries",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      const reference = `weaponMastery=${key}`;
-      insertText(`&Reference[${reference}]`, menu);
-    },
+    title: "DND.MENU.WEAPONMASTERIES.TITLE",
     setting: {
       key: "showweaponMasteries",
-      name: "DND.MENU.WEAPONMASTERIES.SETTING.NAME",
+      name: "DND.MENU.WEAPONMASTERIES.SETTING_NAME",
     },
-    title: "DND.MENU.WEAPONMASTERIES.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "weaponMasteries",
+        callback: async ({ key, menu }) => {
+          const reference = `weaponMastery=${key}`;
+          insertText(`&Reference[${reference}]`, menu);
+        },
+      }),
   },
   areaTargetTypes: {
-    source: "areaTargetTypes",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      insertText(`&Reference[${key}]`, menu);
-    },
+    title: "DND.MENU.AREATARGETTYPES.TITLE",
     setting: {
       key: "showareaTargetTypes",
-      name: "DND.MENU.AREATARGETTYPES.SETTING.NAME",
+      name: "DND.MENU.AREATARGETTYPES.SETTING_NAME",
     },
-    title: "DND.MENU.AREATARGETTYPES.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "areaTargetTypes",
+        callback: async ({ key, menu }) => {
+          insertText(`&Reference[${key}]`, menu);
+        },
+      }),
   },
   itemProperties: {
-    source: "itemProperties",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      insertText(`&Reference[${key}]`, menu);
-    },
+    title: "DND.MENU.ITEMPROPERTIES.TITLE",
     setting: {
       key: "showitemProperties",
-      name: "DND.MENU.ITEMPROPERTIES.SETTING.NAME",
+      name: "DND.MENU.ITEMPROPERTIES.SETTING_NAME",
     },
-    title: "DND.MENU.ITEMPROPERTIES.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "itemProperties",
+        callback: async ({ key, menu }) => {
+          insertText(`&Reference[${key}]`, menu);
+        },
+      }),
   },
   abilities: {
-    source: "abilities",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      insertText(`&Reference[${key}]`, menu);
-    },
+    title: "DND.MENU.ABILITIES.TITLE",
     setting: {
       key: "showabilities",
-      name: "DND.MENU.ABILITIES.SETTING.NAME",
+      name: "DND.MENU.ABILITIES.SETTING_NAME",
     },
-    title: "DND.MENU.ABILITIES.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "abilities",
+        callback: async ({ key, menu }) => {
+          insertText(`&Reference[${key}]`, menu);
+        },
+      }),
   },
   skills: {
-    source: "skills",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      insertText(`&Reference[${key}]`, menu);
-    },
+    title: "DND.MENU.SKILLS.TITLE",
     setting: {
       key: "showskills",
-      name: "DND.MENU.SKILLS.SETTING.NAME",
+      name: "DND.MENU.SKILLS.SETTING_NAME",
     },
-    title: "DND.MENU.SKILLS.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "skills",
+        callback: async ({ key, menu }) => {
+          insertText(`&Reference[${key}]`, menu);
+        },
+      }),
   },
   damageTypes: {
-    source: "damageTypes",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      insertText(`&Reference[${key}]`, menu);
-    },
+    title: "DND.MENU.DAMAGETYPES.TITLE",
     setting: {
       key: "showdamageTypes",
-      name: "DND.MENU.DAMAGETYPES.SETTING.NAME",
+      name: "DND.MENU.DAMAGETYPES.SETTING_NAME",
     },
-    title: "DND.MENU.DAMAGETYPES.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "damageTypes",
+        callback: async ({ key, menu }) => {
+          insertText(`&Reference[${key}]`, menu);
+        },
+      }),
   },
   creatureTypes: {
-    source: "creatureTypes",
-    reference: true,
-    onMenuItemClick: async ({ key, menu }) => {
-      insertText(`&Reference[${key}]`, menu);
-    },
+    title: "DND.MENU.CREATURETYPES.TITLE",
     setting: {
       key: "showcreatureTypes",
-      name: "DND.MENU.CREATURETYPES.SETTING.NAME",
+      name: "DND.MENU.CREATURETYPES.SETTING_NAME",
     },
-    title: "DND.MENU.CREATURETYPES.TITLE",
+    items: () =>
+      createReferenceSubMenuEntriesFromSourceData({
+        source: "creatureTypes",
+        callback: async ({ key, menu }) => {
+          insertText(`&Reference[${key}]`, menu);
+        },
+      }),
   },
-  // TODO: Bring this properly into the fold
-  detectPatterns: {
-    source: null,
-    reference: false,
-    onMenuItemClick: null,
+  detectPattern: {
+    title: "DND.MENU.DETECTPATTERNS.TITLE",
     setting: {
       key: "showdetectPatterns",
-      name: "DND.MENU.DETECTPATTERNS.SETTING.NAME",
+      name: "DND.MENU.DETECTPATTERNS.SETTING_NAME",
     },
-    title: "DND.MENU.DETECTPATTERNS.TITLE",
+    items: () => getDetectionSubMenuItems(),
   },
-  // styles: {
-  //   source: null,
-  //   reference: false,
-  //   onMenuItemClick: null,
-  //   setting: {
-  //     key: "showstyle",
-  //     name: "DND.MENU.STYLE.SETTING.NAME"
-  //   },
-  //   title: "DND.MENU.STYLE.TITLE"
-  // }
-};
-
-export const MENU_CONFIG_LIST = Object.entries(MENU_CONFIGS).map(
-  ([key, value]) => ({
-    key: key,
-    ...value,
-  }),
-);
-
-export const STYLE_BLOCKS = {
-  advice: { class: "fvtt advice", icon: "icons/vtt-512.png" },
-  quest: {
-    class: "fvtt quest",
-    icon: "icons/magic/symbols/question-stone-yellow.webp",
+  styles: {
+    title: "DND.MENU.STYLE.TITLE",
+    setting: {
+      key: "showstyle",
+      name: "DND.MENU.STYLE.SETTING_NAME",
+    },
+    items: getStyleMenuSubItems(),
   },
-  treasure: {
-    class: "fvtt quest",
-    icon: "icons/containers/chest/chest-wooden-tied-white.webp",
-  },
-  narrative: { class: "fvtt narrative", type: "div" },
-  notable: { class: "notable", type: "aside" },
 };

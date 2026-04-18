@@ -1,114 +1,99 @@
-export function getDetectionMenuEntries() {
+// @ts-check
+
+/** @import { SubMenuItem } from '../_types.mjs' */
+
+import { startPatternScan } from "./pattern-scanner.mjs";
+import { insertText } from "../utils.mjs";
+
+/**
+ *
+ * @returns {SubMenuItem[]}
+ */
+export function getDetectionSubMenuItems() {
   return [
     {
-      title: game.i18n.localize("DND.DETECT.TITLE") || "Detect Patterns",
-      action: "detect-patterns",
-      children: [
-        {
-          title: game.i18n.localize("DND.MENU.HEAL.TITLE"),
-          action: "detect-heal",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "heal", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.SAVES.TITLE"),
-          action: "detect-save",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "save", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.CHECKS.TITLE"),
-          action: "detect-check",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "check", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.DAMAGE.TITLE"),
-          action: "detect-damage",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "damage", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.ATTACK.TITLE"),
-          action: "detect-attack",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "attack", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.CONDITIONTYPES.TITLE"),
-          action: "detect-condition",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "condition", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.RULES.TITLE"),
-          action: "detect-rule",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "rule", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.WEAPONMASTERIES.TITLE"),
-          action: "detect-weaponMastery",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "weaponMastery", insertText),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.AREATARGETTYPES.TITLE"),
-          action: "detect-areaTargetType",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "areaTargetType", insertText),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.ITEMPROPERTIES.TITLE"),
-          action: "detect-spellProperty",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "spellProperty", insertText),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.ABILITIES.TITLE"),
-          action: "detect-ability",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "ability", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.SKILLS.TITLE"),
-          action: "detect-skill",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "skill", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.DAMAGETYPES.TITLE"),
-          action: "detect-damageType",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "damageType", (text) =>
-              insertText(text, proseMirrorMenu),
-            ),
-        },
-        {
-          title: game.i18n.localize("DND.MENU.CREATURETYPES.TITLE"),
-          action: "detect-creatureType",
-          cmd: () =>
-            startPatternScan(proseMirrorMenu, "creatureType", insertText),
-        },
-      ],
+      title: game.i18n.localize("DND.MENU.HEAL.TITLE"),
+      key: "detect-heal",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "heal", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.SAVES.TITLE"),
+      key: "detect-save",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "save", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.CHECKS.TITLE"),
+      key: "detect-check",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "check", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.DAMAGE.TITLE"),
+      key: "detect-damage",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "damage", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.ATTACK.TITLE"),
+      key: "detect-attack",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "attack", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.CONDITIONTYPES.TITLE"),
+      key: "detect-condition",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "condition", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.RULES.TITLE"),
+      key: "detect-rule",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "rule", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.WEAPONMASTERIES.TITLE"),
+      key: "detect-weaponMastery",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "weaponMastery", insertText),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.AREATARGETTYPES.TITLE"),
+      key: "detect-areaTargetType",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "areaTargetType", insertText),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.ITEMPROPERTIES.TITLE"),
+      key: "detect-spellProperty",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "spellProperty", insertText),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.ABILITIES.TITLE"),
+      key: "detect-ability",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "ability", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.SKILLS.TITLE"),
+      key: "detect-skill",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "skill", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.DAMAGETYPES.TITLE"),
+      key: "detect-damageType",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "damageType", (text) => insertText(text, menu)),
+    },
+    {
+      title: game.i18n.localize("DND.MENU.CREATURETYPES.TITLE"),
+      key: "detect-creatureType",
+      onMenuItemClick: (menu) =>
+        startPatternScan(menu, "creatureType", insertText),
     },
   ];
 }

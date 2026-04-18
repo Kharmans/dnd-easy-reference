@@ -1,4 +1,4 @@
-import { MENU_CONFIG_LIST } from "./config.mjs";
+import { MENU_CONFIG_ITEMS } from "./config.mjs";
 
 export function initSettings() {
   game.settings.register("dnd-easy-reference", "widenItemWindows", {
@@ -18,13 +18,20 @@ export function initSettings() {
     },
   });
 
-  MENU_CONFIG_LIST.forEach((config) => {
-    game.settings.register("dnd-easy-reference", config.setting.key, {
-      name: config.setting.name,
-      scope: "world",
-      config: true,
-      type: Boolean,
-      default: true,
+  Object.values(MENU_CONFIG_ITEMS)
+    .toSorted((a, b) =>
+      game.i18n
+        .localize(a.setting.name)
+        .localeCompare(game.i18n.localize(b.setting.name)),
+    )
+    .forEach((value) => {
+      console.log("registering setting", value);
+      game.settings.register("dnd-easy-reference", value.setting.key, {
+        name: value.setting.name,
+        scope: "world",
+        config: true,
+        type: Boolean,
+        default: true,
+      });
     });
-  });
 }

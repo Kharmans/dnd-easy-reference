@@ -1,5 +1,5 @@
+import { MENU_CONFIG_ITEMS } from "./scripts/config.mjs";
 import { initSettings } from "./scripts/settings.mjs";
-import { addEasyReferenceMenu } from "./scripts/menu.mjs";
 
 const Hooks = foundry.helpers.Hooks;
 
@@ -15,5 +15,36 @@ Hooks.once("ready", () => {
 });
 
 Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
-  addEasyReferenceMenu(dropdowns, proseMirrorMenu);
+  const entries = Object.entries(MENU_CONFIG_ITEMS)
+    // Only show enabled options
+    .filter(([_, value]) =>
+      game.settings.get("dnd-easy-reference", value.setting.key),
+    )
+    // Create menu items
+    .map(([key, value]) => ({
+      title: game.i18n.localize(value.title),
+      action: `${key}-menu-item`,
+      cmd: value.onMenuItemClick
+        ? () => value.onMenuItemClick?.(proseMirrorMenu)
+        : undefined,
+      children: (typeof value.items === "function"
+        ? value.items()
+        : value.items
+      )?.map((item) => ({
+        title: item.title,
+        action: `${key}-${item.key}-sub-menu-item`,
+        cmd: item.onMenuItemClick
+          ? () => item.onMenuItemClick?.(proseMirrorMenu)
+          : undefined,
+      })),
+    }))
+    // Sort by title for the current locale
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  // Assign to own menu
+  dropdowns.dndeasyreference = {
+    action: "reference",
+    title: '<i class="fa-solid fa-books"></i>',
+    entries,
+  };
 });
