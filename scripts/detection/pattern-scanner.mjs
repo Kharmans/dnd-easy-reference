@@ -259,11 +259,11 @@ async function findAndPromptNextMatch() {
 							matchResult[patternConfig.concentrationGroup2]
 						) {
 							console.warn(
-								`Save matched ("${fullMatchText}"), but failed to resolve key data. AbilityStr: "${abilityStr}", ConcentrationStr: "${concentrationStr}", DCStr: "${dcStr}"`
+								`D&D Easy Reference | Save matched ("${fullMatchText}"), but failed to resolve key data. AbilityStr: "${abilityStr}", ConcentrationStr: "${concentrationStr}", DCStr: "${dcStr}"`
 							);
 						} else {
 							console.error(
-								`Save matched ("${fullMatchText}"), but logic failed to categorize into Branch 1 or 2.`
+								`D&D Easy Reference | Save matched ("${fullMatchText}"), but logic failed to categorize into Branch 1 or 2.`
 							);
 						}
 						dataExtracted = false;
@@ -365,7 +365,7 @@ async function findAndPromptNextMatch() {
 					} else {
 						if (checkTypeFound !== null) {
 							console.warn(
-								`Check matched ("${fullMatchText}"), structure OK, but failed to resolve key for type: "${checkTypeFound}"`
+								`D&D Easy Reference | Check matched ("${fullMatchText}"), structure OK, but failed to resolve key for type: "${checkTypeFound}"`
 							);
 						}
 					}
@@ -450,7 +450,7 @@ async function findAndPromptNextMatch() {
 									initialData.parts[0].types.add(key);
 								} else {
 									console.warn(
-										`Damage type "${name}" (processed from "${damageTypesStr}") not found in map for language "${lang}".`
+										`D&D Easy Reference | Damage type "${name}" (processed from "${damageTypesStr}") not found in map for language "${lang}".`
 									);
 								}
 							}
@@ -458,7 +458,7 @@ async function findAndPromptNextMatch() {
 						dataExtracted = true;
 					} else {
 						console.warn(
-							`Damage matched ("${fullMatchText}"), but failed criteria: Formula='${formula}', KeywordPresent=${damageKeywordPresent}, TypesString='${damageTypesStr}'`
+							`D&D Easy Reference | Damage matched ("${fullMatchText}"), but failed criteria: Formula='${formula}', KeywordPresent=${damageKeywordPresent}, TypesString='${damageTypesStr}'`
 						);
 					}
 				} else if (type === "attack") {
@@ -484,12 +484,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Condition matched ("${fullMatchText}"), but failed to resolve key for: "${conditionNameStr}"`
+								`D&D Easy Reference | Condition matched ("${fullMatchText}"), but failed to resolve key for: "${conditionNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Condition matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Condition matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "rule") {
@@ -503,12 +503,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Rule matched ("${fullMatchText}"), but failed to resolve key for: "${ruleNameStr}"`
+								`D&D Easy Reference | Rule matched ("${fullMatchText}"), but failed to resolve key for: "${ruleNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Rule matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Rule matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "weaponMastery") {
@@ -522,12 +522,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Rule matched ("${fullMatchText}"), but failed to resolve key for: "${masteryNameStr}"`
+								`D&D Easy Reference | Rule matched ("${fullMatchText}"), but failed to resolve key for: "${masteryNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Rule matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Rule matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "areaTargetType") {
@@ -540,12 +540,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Area Target Type matched ("${fullMatchText}"), but failed to resolve key for: "${areaNameStr}"`
+								`D&D Easy Reference | Area Target Type matched ("${fullMatchText}"), but failed to resolve key for: "${areaNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Area Target Type matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Area Target Type matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "spellProperty") {
@@ -559,12 +559,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Spell Property matched ("${fullMatchText}"), but failed to resolve key for: "${propertyNameStr}"`
+								`D&D Easy Reference | Spell Property matched ("${fullMatchText}"), but failed to resolve key for: "${propertyNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Spell Property matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Spell Property matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "ability") {
@@ -577,12 +577,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Ability matched ("${fullMatchText}"), but failed to resolve key for: "${abilityNameStr}"`
+								`D&D Easy Reference | Ability matched ("${fullMatchText}"), but failed to resolve key for: "${abilityNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Ability matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Ability matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "skill") {
@@ -595,12 +595,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Skill matched ("${fullMatchText}"), but failed to resolve key for: "${skillNameStr}"`
+								`D&D Easy Reference | Skill matched ("${fullMatchText}"), but failed to resolve key for: "${skillNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Skill matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Skill matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "damageType") {
@@ -614,12 +614,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Damage Type matched ("${fullMatchText}"), but failed to resolve key for: "${damageTypeNameStr}"`
+								`D&D Easy Reference | Damage Type matched ("${fullMatchText}"), but failed to resolve key for: "${damageTypeNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Damage Type matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Damage Type matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				} else if (type === "creatureType") {
@@ -632,12 +632,12 @@ async function findAndPromptNextMatch() {
 							dataExtracted = true;
 						} else {
 							console.warn(
-								`Creature Type matched ("${fullMatchText}"), but failed to resolve key for: "${typeNameStr}"`
+								`D&D Easy Reference | Creature Type matched ("${fullMatchText}"), but failed to resolve key for: "${typeNameStr}"`
 							);
 						}
 					} else {
 						console.warn(
-							`Creature Type matched ("${fullMatchText}"), but name string or map was missing.`
+							`D&D Easy Reference | Creature Type matched ("${fullMatchText}"), but name string or map was missing.`
 						);
 					}
 				}
@@ -698,7 +698,7 @@ async function findAndPromptNextMatch() {
 			view.focus(); // To keep focus on editor for visual selection
 		} catch (e) {
 			// If selection fails, continues scan from next position
-			console.error("Error during selection dispatch or focus:", e);
+			console.error("D&D Easy Reference | Error during selection dispatch or focus:", e);
 			currentScanState.lastIndex = nextScanIndex;
 			await findAndPromptNextMatch();
 			return;

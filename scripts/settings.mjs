@@ -25,7 +25,7 @@ export function initSettings() {
         .localeCompare(game.i18n.localize(b.setting.name)),
     )
     .forEach((value) => {
-      console.log("registering setting", value);
+      console.log("D&D Easy Reference | registering setting", value);
       game.settings.register("dnd-easy-reference", value.setting.key, {
         name: value.setting.name,
         scope: "world",

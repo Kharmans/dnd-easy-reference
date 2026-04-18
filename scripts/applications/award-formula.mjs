@@ -1,13 +1,13 @@
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
-const { BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
+const { BooleanField, NumberField } = foundry.data.fields;
 
 /**
  * @typedef {object} AwardConfig
- * @property {number} xp          Les points d'expérience à accorder.
- * @property {number} gp          Les pièces d'or.
- * @property {number} sp          Les pièces d'argent.
- * @property {number} cp          Les pièces de cuivre.
- * @property {boolean} each       Si la récompense est pour chaque personnage.
+ * @property {number} xp          XP to award.
+ * @property {number} gp          GP to award.
+ * @property {number} sp          SP to award.
+ * @property {number} cp          CP to award.
+ * @property {boolean} each       Denotes whether the award is for each character (true) or to divide amongst the character (false).
  */
 
 export default class AwardFormulaDialog extends HandlebarsApplicationMixin(ApplicationV2) {
@@ -45,7 +45,6 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   /* -------------------------------------------------- */
 
   /**
-   * Modèle de données.
    * @type {AwardFormulaModel}
    */
   #model = new AwardFormulaModel();
@@ -53,7 +52,7 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   /* -------------------------------------------------- */
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -64,18 +63,16 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   /* -------------------------------------------------- */
 
   /**
-   * Texte final à injecter.
+   * Final text to inject.
    * @type {string|null}
    */
   get #text() {
     const parts = [];
     
-    // Ajout de l'XP
     if (this.#model.xp > 0) {
       parts.push(`${this.#model.xp}xp`);
     }
     
-    // Ajout de la monnaie
     const currency = [];
     if (this.#model.gp > 0) currency.push(`${this.#model.gp}gp`);
     if (this.#model.sp > 0) currency.push(`${this.#model.sp}sp`);
@@ -89,7 +86,6 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
     
     let command = parts.join(" ");
     
-    // Ajout de "each" si nécessaire
     if (this.#model.each) {
       command += " each";
     }
@@ -144,7 +140,6 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   /* -------------------------------------------------- */
 
   /**
-   * Gère la soumission du formulaire.
    * @this {AwardFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -164,19 +159,17 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   }
 
   /* -------------------------------------------------- */
-  /* Méthodes d'usine                                */
+  /* Factory methods                                    */
   /* -------------------------------------------------- */
 
   /**
-   * Crée et affiche une instance asynchrone de cette application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou `null`.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
     
-    // Applique les données initiales si elles existent
     if (options.initialData) {
       const dataToApply = foundry.utils.deepClone(options.initialData);
       application.#model.updateSource(dataToApply);

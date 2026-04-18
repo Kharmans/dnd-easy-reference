@@ -3,8 +3,8 @@ const { StringField, BooleanField } = foundry.data.fields;
 
 /**
  * @typedef {object} ConditionConfig
- * @property {string} condition   L'ID de la condition sélectionnée.
- * @property {boolean} apply      Indique si le bouton appliquer doit être affiché.
+ * @property {string} condition   The ID of the selected condition.
+ * @property {boolean} apply      Indicates whether the Apply button should be displayed.
  */
 
 export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
@@ -44,7 +44,6 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Modèle de données.
    * @type {ConditionFormulaModel}
    */
   #model = new ConditionFormulaModel();
@@ -52,7 +51,7 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {string|null}
    */
   #config = null;
@@ -63,7 +62,7 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -123,7 +122,6 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Gère la soumission du formulaire.
    * @this {ConditionFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -150,11 +148,10 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Méthodes d'usine                                */
+  /* Factory methods                                */
   /* -------------------------------------------------- */
 
   /**
-   * Constructeur.
    * @param {object} data
    */
   constructor(data) {
@@ -163,7 +160,6 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Crée une instance de l'application.
    * @param {object} [options]
    * @returns {Promise<string|null>}
    */

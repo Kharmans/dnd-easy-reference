@@ -52,7 +52,7 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -63,7 +63,7 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -137,8 +137,8 @@ export default class AttackFormulaDialog extends HandlebarsApplicationMixin(
 
   /**
    * Creates an instance of the application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou null.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();

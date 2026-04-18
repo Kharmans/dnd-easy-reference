@@ -40,13 +40,12 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	};
 
 	/**
-	 * Modèle de données.
 	 * @type {CheckFormulaModel}
 	 */
 	#model = new CheckFormulaModel();
 
 	/**
-	 * Configuration résultante.
+	 * Resulting configuration.
 	 * @type {object|null}
 	 */
 	#config = null;
@@ -55,7 +54,7 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	}
 
 	/**
-	 * Texte à injecter.
+	 * Text to inject.
 	 * @type {string|null}
 	 */
 	get #text() {
@@ -129,7 +128,7 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 			acc[k] = dnd5e.documents.Trait.keyLabel(`tool:${k}`);
 			return acc;
 		}, {});
-		console.log("tools", tools);
+
 		this.toolsMap = tools;
 		context.tools = tools;
 
@@ -145,7 +144,6 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	}
 
 	/**
-	 * Gère la soumission du formulaire.
 	 * @this {CheckFormulaDialog}
 	 * @param {SubmitEvent} event
 	 * @param {HTMLFormElement} form
@@ -166,7 +164,6 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	}
 
 	/**
-	 * Ajoute un nouveau type de test.
 	 * @this {CheckFormulaDialog}
 	 * @param {PointerEvent} event
 	 * @param {HTMLElement} target
@@ -179,7 +176,6 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	}
 
 	/**
-	 * Supprime un type de test.
 	 * @this {CheckFormulaDialog}
 	 * @param {PointerEvent} event
 	 * @param {HTMLElement} target
@@ -198,14 +194,13 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 	}
 
 	/**
-	 * Creates an instance of the application.
-	 * @param {object} [options]            Options.
-	 * @returns {Promise<string|null>}      Le texte, ou null.
+	 * @param {object} [options]
+	 * @returns {Promise<string|null>}      The text, or `null`.
 	 */
 	static async create(options = {}) {
 		const { promise, resolve } = Promise.withResolvers();
 		const application = new this(options);
-		//Overrides default data if initial data is found
+		
 		if (options.initialData) {
 			const dataToApply = { ...options.initialData };
 
@@ -220,11 +215,12 @@ export default class CheckFormulaDialog extends HandlebarsApplicationMixin(
 					delete dataToApply.checks;
 				}
 			} else if (dataToApply.checks && dataToApply.checks.length === 0) {
-				// If an empty array was passed, keeps it empty
+				// Do nothing
 			} else if (!dataToApply.checks) {
 				delete dataToApply.checks;
 			}
-			// Clean sup undefined properties to avoid overriding model defaults unintentionally
+			
+			// Remove undefined properties to avoid overriding model defaults unintentionally
 			Object.keys(dataToApply).forEach((key) => {
 				if (dataToApply[key] === undefined) {
 					delete dataToApply[key];

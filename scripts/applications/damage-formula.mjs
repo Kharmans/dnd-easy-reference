@@ -4,8 +4,8 @@ const { ArrayField, BooleanField, SchemaField, SetField, StringField } =
 
 /**
  * @typedef {object} DamageConfig
- * @property {string} formula     La formule de dégâts.
- * @property {string[]} types     Les types de dégâts.
+ * @property {string} formula     The damage formula.
+ * @property {string[]} types     The types of damage.
  */
 
 export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
@@ -53,7 +53,6 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Modèle de données.
    * @type {DamageFormulaModel}
    */
   #model = new DamageFormulaModel();
@@ -61,7 +60,7 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -72,7 +71,7 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Texte final à injecter.
+   * Final text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -153,7 +152,6 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Gère la soumission du formulaire.
    * @this {DamageFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -167,7 +165,6 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
         break;
       case "submit":
         this.#config = this.#text;
-        // Le callback (si défini) sera appelé via l'event listener 'close'
         this.close();
         break;
     }
@@ -176,7 +173,6 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Ajoute une nouvelle partie de dégâts.
    * @this {DamageFormulaDialog}
    * @param {PointerEvent} event
    * @param {HTMLElement} target
@@ -191,7 +187,6 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Supprime une partie de dégâts.
    * @this {DamageFormulaDialog}
    * @param {PointerEvent} event
    * @param {HTMLElement} target
@@ -205,18 +200,17 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Méthodes d'usine                               */
+  /* Factory methods                                    */
   /* -------------------------------------------------- */
 
   /**
-   * Crée et affiche une instance asynchrone de cette application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou `null`.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
-    //Overrides default data if initial data is found
+    
     if (options.initialData) {
       const dataToApply = foundry.utils.deepClone(options.initialData);
       if (dataToApply.parts && Array.isArray(dataToApply.parts)) {
@@ -228,7 +222,7 @@ export default class DamageFormulaDialog extends HandlebarsApplicationMixin(
               );
             } catch (e) {
               console.warn(
-                "DamageFormulaDialog: Could not convert initial types to Set, defaulting to empty.",
+                "D&D Easy Reference | DamageFormulaDialog: Could not convert initial types to Set, defaulting to empty.",
                 e
               );
               part.types = new Set();

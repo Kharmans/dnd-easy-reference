@@ -34,13 +34,12 @@ export default class LookupFormulaDialog extends HandlebarsApplicationMixin(Appl
   }
 
   /**
-   * Modèle de données.
    * @type {LookupFormulaModel}
    */
   #model = new LookupFormulaModel();
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -49,7 +48,7 @@ export default class LookupFormulaDialog extends HandlebarsApplicationMixin(Appl
   }
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -101,7 +100,7 @@ export default class LookupFormulaDialog extends HandlebarsApplicationMixin(Appl
   }
 
   /**
-   * Prépare les options pour le menu déroulant des attributs traçables.
+   * Prepares the options for the traceable attributes dropdown menu.
    * @returns {Array}
    */
   _prepareTrackableOptions() {
@@ -143,7 +142,6 @@ export default class LookupFormulaDialog extends HandlebarsApplicationMixin(Appl
   }
 
   /**
-   * Gère la soumission du formulaire.
    * @this {LookupFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -169,9 +167,8 @@ export default class LookupFormulaDialog extends HandlebarsApplicationMixin(Appl
   }
 
   /**
-   * Crée une instance de l'application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou null.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();

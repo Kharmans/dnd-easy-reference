@@ -4,7 +4,7 @@ import * as fs from "fs";
 import yaml from "js-yaml";
 import path from "path";
 
-console.log("Reforging Symlinks");
+console.log("D&D Easy Reference | Reforging Symlinks");
 
 const symlinkConfigPath = "symlink-config.yaml";
 
@@ -31,7 +31,7 @@ if (fs.existsSync(symlinkConfigPath)) {
   }
 } else {
   console.log(
-    `${symlinkConfigPath} not found. Create this file in the project root using the example file for guidance.`,
+    `D&D Easy Reference | ${symlinkConfigPath} not found. Create this file in the project root using the example file for guidance.`,
   );
 }
 
@@ -48,7 +48,7 @@ async function getFoundryFileRoot(foundryInstallPath) {
       return foundryInstallPath;
     }
   } catch (err) {
-    console.error(`Error reading ${symlinkConfigPath}: ${err}`);
+    console.error(`D&D Easy Reference | Error reading ${symlinkConfigPath}: ${err}`);
   }
 
   return "";
