@@ -12,21 +12,23 @@ export function addEasyReferenceMenu(dropdowns, proseMirrorMenu) {
     action: "reference",
     title: '<i class="fa-solid fa-books"></i>',
     entries: [
-      ...getDetectionMenuEntries(),
+      ...(game.settings.get("dnd-easy-reference", "showdetectPatterns")
+        ? getDetectionMenuEntries()
+        : []),
       ...enabledMenus
-        .filter(([_, config]) => !config.source)
+        .filter(([_, config]) => !config.source && config.onMenuItemClick)
         .map(([key, config]) => ({
           title: game.i18n.localize(config.title),
           action: `${key}-dialog`,
           cmd: () =>
-            config.onMenuItemClick?.({
+            config.onMenuItemClick({
               key: undefined,
               value: undefined,
               menu: proseMirrorMenu,
             }),
         })),
       ...enabledMenus
-        .filter(([_, config]) => config.source)
+        .filter(([_, config]) => config.source && config.onMenuItemClick)
         .map(([key, config]) => ({
           title: game.i18n.localize(config.title),
           action: key,
@@ -128,10 +130,8 @@ function createStyleEntry(type, config, menu) {
         ],
       );
 
-      menu.view.dispatch(
-        menu.view.state.tr.replaceSelectionWith(divNode),
-      );
-      
+      menu.view.dispatch(menu.view.state.tr.replaceSelectionWith(divNode));
+
       return true;
     },
   };

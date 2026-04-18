@@ -234,6 +234,16 @@ export const MENU_CONFIGS = {
     },
     title: "DND.MENU.DETECTPATTERNS.TITLE",
   },
+  // styles: {
+  //   source: null,
+  //   reference: false,
+  //   onMenuItemClick: null,
+  //   setting: {
+  //     key: "showstyle",
+  //     name: "DND.MENU.STYLE.SETTING.NAME"
+  //   },
+  //   title: "DND.MENU.STYLE.TITLE"
+  // }
 };
 
 export const MENU_CONFIG_LIST = Object.entries(MENU_CONFIGS).map(

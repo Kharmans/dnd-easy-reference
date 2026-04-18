@@ -1,3 +1,6 @@
+# For doing dev directly in the modules folder (or symlinked in)
+dnd-easy-reference.lock
+
 # Symlinked content for intellisense
 symlink-config.yaml
 foundry
