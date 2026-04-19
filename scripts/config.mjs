@@ -26,13 +26,13 @@ export const MENU_CONFIG = {
     },
     onMenuItemClick: async (menu) => {
       const text = await SaveFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
   },
   checks: {
     onMenuItemClick: async (menu) => {
       const text = await CheckFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showchecks",
@@ -43,7 +43,7 @@ export const MENU_CONFIG = {
   attack: {
     onMenuItemClick: async (menu) => {
       const text = await AttackFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showattack",
@@ -54,7 +54,7 @@ export const MENU_CONFIG = {
   damage: {
     onMenuItemClick: async (menu) => {
       const text = await DamageFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showdamage",
@@ -65,7 +65,7 @@ export const MENU_CONFIG = {
   heal: {
     onMenuItemClick: async (menu) => {
       const text = await HealFormulaDialog.create();
-      if (text) insertText(text, menu);
+      if (text) insertText({ text, menu });
     },
     setting: {
       key: "showheal",
@@ -76,7 +76,7 @@ export const MENU_CONFIG = {
   conditionTypes: {
     onMenuItemClick: async (menu) => {
       const text = await ConditionFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showconditionTypes",
@@ -87,7 +87,7 @@ export const MENU_CONFIG = {
   award: {
     onMenuItemClick: async (menu) => {
       const text = await AwardFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showaward",
@@ -98,7 +98,7 @@ export const MENU_CONFIG = {
   lookup: {
     onMenuItemClick: async (menu) => {
       const text = await LookupFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showlookup",
@@ -109,7 +109,7 @@ export const MENU_CONFIG = {
   rules: {
     onMenuItemClick: async (menu) => {
       const text = await RuleFormulaDialog.create();
-      insertText(text, menu);
+      insertText({ text, menu });
     },
     setting: {
       key: "showrules",
@@ -128,7 +128,7 @@ export const MENU_CONFIG = {
         source: "weaponMasteries",
         callback: async ({ key, menu }) => {
           const reference = `weaponMastery=${key}`;
-          insertText(`&Reference[${reference}]`, menu);
+          insertText({ text: `&Reference[${reference}]`, menu });
         },
       }),
   },
@@ -142,7 +142,7 @@ export const MENU_CONFIG = {
       createReferenceSubMenuEntriesFromSourceData({
         source: "areaTargetTypes",
         callback: async ({ key, menu }) => {
-          insertText(`&Reference[${key}]`, menu);
+          insertText({ text: `&Reference[${key}]`, menu });
         },
       }),
   },
@@ -156,7 +156,7 @@ export const MENU_CONFIG = {
       createReferenceSubMenuEntriesFromSourceData({
         source: "itemProperties",
         callback: async ({ key, menu }) => {
-          insertText(`&Reference[${key}]`, menu);
+          insertText({ text: `&Reference[${key}]`, menu });
         },
       }),
   },
@@ -170,7 +170,7 @@ export const MENU_CONFIG = {
       createReferenceSubMenuEntriesFromSourceData({
         source: "abilities",
         callback: async ({ key, menu }) => {
-          insertText(`&Reference[${key}]`, menu);
+          insertText({ text: `&Reference[${key}]`, menu });
         },
       }),
   },
@@ -184,7 +184,7 @@ export const MENU_CONFIG = {
       createReferenceSubMenuEntriesFromSourceData({
         source: "skills",
         callback: async ({ key, menu }) => {
-          insertText(`&Reference[${key}]`, menu);
+          insertText({ text: `&Reference[${key}]`, menu });
         },
       }),
   },
@@ -198,7 +198,7 @@ export const MENU_CONFIG = {
       createReferenceSubMenuEntriesFromSourceData({
         source: "damageTypes",
         callback: async ({ key, menu }) => {
-          insertText(`&Reference[${key}]`, menu);
+          insertText({ text: `&Reference[${key}]`, menu });
         },
       }),
   },
@@ -212,7 +212,7 @@ export const MENU_CONFIG = {
       createReferenceSubMenuEntriesFromSourceData({
         source: "creatureTypes",
         callback: async ({ key, menu }) => {
-          insertText(`&Reference[${key}]`, menu);
+          insertText({ text: `&Reference[${key}]`, menu });
         },
       }),
   },

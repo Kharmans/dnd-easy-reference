@@ -1,6 +1,6 @@
 import { MENU_CONFIG } from "./scripts/config.mjs";
 import { initSettings } from "./scripts/settings.mjs";
-import { replaceSelection } from "./scripts/prose-mirror/utils.mjs";
+import { insertText, replaceSelection } from "./scripts/prose-mirror/utils.mjs";
 
 const Hooks = foundry.helpers.Hooks;
 
@@ -15,10 +15,10 @@ Hooks.once("i18nInit", () => {
   CONFIG.DND_EASY_REFERENCE = {
     MENU_CONFIG,
     api: {
-      replaceSelection: replaceSelection
-    }
+      replaceSelection,
+      insertText,
+    },
   };
-
 });
 
 Hooks.once("ready", () => {

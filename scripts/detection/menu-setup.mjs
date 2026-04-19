@@ -13,43 +13,43 @@ export function getDetectionSubMenuItems() {
       title: game.i18n.localize("DND.MENU.HEAL.TITLE"),
       key: "detect-heal",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "heal", (text) => insertText(text, menu)),
+        startPatternScan(menu, "heal", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.SAVES.TITLE"),
       key: "detect-save",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "save", (text) => insertText(text, menu)),
+        startPatternScan(menu, "save", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.CHECKS.TITLE"),
       key: "detect-check",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "check", (text) => insertText(text, menu)),
+        startPatternScan(menu, "check", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.DAMAGE.TITLE"),
       key: "detect-damage",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "damage", (text) => insertText(text, menu)),
+        startPatternScan(menu, "damage", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.ATTACK.TITLE"),
       key: "detect-attack",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "attack", (text) => insertText(text, menu)),
+        startPatternScan(menu, "attack", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.CONDITIONTYPES.TITLE"),
       key: "detect-condition",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "condition", (text) => insertText(text, menu)),
+        startPatternScan(menu, "condition", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.RULES.TITLE"),
       key: "detect-rule",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "rule", (text) => insertText(text, menu)),
+        startPatternScan(menu, "rule", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.WEAPONMASTERIES.TITLE"),
@@ -73,19 +73,19 @@ export function getDetectionSubMenuItems() {
       title: game.i18n.localize("DND.MENU.ABILITIES.TITLE"),
       key: "detect-ability",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "ability", (text) => insertText(text, menu)),
+        startPatternScan(menu, "ability", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.SKILLS.TITLE"),
       key: "detect-skill",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "skill", (text) => insertText(text, menu)),
+        startPatternScan(menu, "skill", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.DAMAGETYPES.TITLE"),
       key: "detect-damageType",
       onMenuItemClick: (menu) =>
-        startPatternScan(menu, "damageType", (text) => insertText(text, menu)),
+        startPatternScan(menu, "damageType", (text) => insertText({ text, menu })),
     },
     {
       title: game.i18n.localize("DND.MENU.CREATURETYPES.TITLE"),
