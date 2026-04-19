@@ -7,10 +7,11 @@ Hooks.once("i18nInit", () => {
   // Allow outside scripts to change the menu.
   Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", MENU_CONFIG_ITEMS);
 
-  // Put in CONFIG.
+  // Put menu config in CONFIG.
   CONFIG.DND_EASY_REFERENCE = { MENU_CONFIG_ITEMS };
 
-  initSettings();
+  // Init settings at this startup phase because of localized setting sorting.
+  initSettings(MENU_CONFIG_ITEMS);
 });
 
 Hooks.once("ready", () => {

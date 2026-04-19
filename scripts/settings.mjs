@@ -1,6 +1,10 @@
-import { MENU_CONFIG_ITEMS } from "./config.mjs";
+/** @import { MenuConfigItem } from './_types.mjs' */
 
-export function initSettings() {
+/**
+ *
+ * @param {Record<string, MenuConfigItem>} items
+ */
+export function initSettings(items) {
   game.settings.register("dnd-easy-reference", "widenItemWindows", {
     name: game.i18n.localize("DND.SETTINGS.PROSEGAP.TITLE"),
     hint: game.i18n.localize("DND.SETTINGS.PROSEGAP.HINT"),
@@ -18,7 +22,7 @@ export function initSettings() {
     },
   });
 
-  Object.values(MENU_CONFIG_ITEMS)
+  Object.values(items)
     .filter((item) => item.setting?.key && item.setting?.name)
     .toSorted((a, b) =>
       game.i18n
