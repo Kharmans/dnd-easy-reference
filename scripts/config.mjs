@@ -17,7 +17,7 @@ import { getDetectionSubMenuItems } from "./detection/menu-setup.mjs";
 import { getStyleMenuSubItems } from "./style-blocks/menu-setup.mjs";
 
 /** @type {Record<string, MenuConfigItem>} */
-export const MENU_CONFIG_ITEMS = {
+export const MENU_CONFIG = {
   saves: {
     title: "DND.MENU.SAVES.TITLE",
     setting: {

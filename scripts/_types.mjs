@@ -1,41 +1,30 @@
 // @ts-check
 
 /**
- * @typedef {string | string[] | null} MenuDataSource todo document
+ * @typedef MenuConfigItem    A menu item in the D&D Easy Reference menu at the top level.
+ * @property {string} title   The text to show for the menu item.
+ * @property {MenuItemClickCallback} [onMenuItemClick]    What to do when the menu item is clicked.
+ * @property {SubMenuItem[] | (() => SubMenuItem[])} [items]    Submenu items, or a function for retrieving submenu items.
+ * @property {MenuConfigItemConfigSetting} [setting]    Optional opt-in to have this menu item appear 
+ *                                                      in the module's settings for toggling on/off.
+ *                                                      To opt-out, don't set this property.
  */
 
 /**
- * @typedef MenuConfigItemConfigSetting
- * @property {string} key - the setting key, which is used to save and load the setting.
- * @property {string} name - the localization key for the setting name.
+ * @typedef MenuConfigItemConfigSetting    The data needed to established a visibility toggle for a given MenuConfigItem.
+ * @property {string} key    The setting key, which is used to save and load the setting.
+ * @property {string} name   The localization key for the setting name.
  */
 
 /**
- * @typedef OnMenuItemClickCallbackOptions
- * @property {string|undefined}    key     The selected sub-menu option key, based on source data, such as "athletics", "lightning", or "str".
- * @property {Record<string, any>|undefined} value   The CONFIG.DND5E value of the selected key. For a skill, this would contain label, reference, etc.
- * @property {any} menu               The ProseMirrorMenu instance.
+ * @typedef {(menu: any) => Promise<void>} MenuItemClickCallback    What to do when the menu item is clicked.
+ *                                                                  `menu` is a `ProseMirrorMenu` instance, which is used
+ *                                                                  to access commands for toggling blocks, inserting text, etc.
  */
 
 /**
- * @typedef {(options: OnMenuItemClickCallbackOptions) => Promise<void>} OnMenuItemClickCallback
- */
-
-/**
- * @typedef MenuConfigItem
- * @property {string} title
- * @property {MenuItemClickCallback} [onMenuItemClick]
- * @property {SubMenuItem[] | (() => SubMenuItem[])} [items]
- * @property {MenuConfigItemConfigSetting} [setting]
- */
-
-/**
- * @typedef {(menu: any) => Promise<void>} MenuItemClickCallback
- */
-
-/**
- * @typedef SubMenuItem
- * @property {string} title
- * @property {string} key
- * @property {MenuItemClickCallback?} onMenuItemClick
+ * @typedef SubMenuItem    A submenu item.
+ * @property {string} title    The text to show for the submenu item.
+ * @property {string} key    A unique identifier for this submenu item amongst its direct peers menu items.
+ * @property {MenuItemClickCallback?} onMenuItemClick    What to do when this submenu item is clicked.
  */
