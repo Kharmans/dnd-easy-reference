@@ -1,0 +1,33 @@
+{
+  "name": "dnd-easy-reference",
+  "version": "1.0.0",
+  "description": "Adds a menu to ProseMirror containing references to the D&D system for quicker, easier additions.",
+  "keywords": [
+    "foundry",
+    "dnd5e",
+    "prose",
+    "mirror",
+    "text",
+    "editor",
+    "utilities"
+  ],
+  "homepage": "https://github.com/kgar/dnd-easy-reference#readme",
+  "bugs": {
+    "url": "https://github.com/kgar/dnd-easy-reference/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgar/dnd-easy-reference.git"
+  },
+  "license": "MIT",
+  "author": "padhiver, kgar",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "link": "node ./tools/create-symlinks.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}

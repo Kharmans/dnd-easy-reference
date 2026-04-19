@@ -52,54 +52,69 @@
     },
     "MENU": {
       "ABILITIES": {
-        "TITLE": "Abilities"
+        "SETTING_NAME": "Show Abilities",
+        "TITLE": "Show Abilities"
       },
       "AREATARGETTYPES": {
+        "SETTING_NAME": "Show Area Target Types",
         "TITLE": "Area Target Types"
       },
       "ATTACK": {
+        "SETTING_NAME": "Show Attack formula",
         "TITLE": "Attack formula"
       },
       "AWARD": {
-        "TITLE": "Awards",
-        "HINT": "Show the award menu in the editor"
+        "SETTING_NAME": "Show Awards",
+        "TITLE": "Awards"
       },
       "CHECKS": {
+        "SETTING_NAME": "Show Checks",
         "TITLE": "Checks"
       },
       "CONDITIONTYPES": {
+        "SETTING_NAME": "Show Conditions",
         "TITLE": "Conditions"
       },
       "CREATURETYPES": {
+        "SETTING_NAME": "Show Creature Types",
         "TITLE": "Creature Types"
       },
       "DAMAGE": {
+        "SETTING_NAME": "Show Damage formula",
         "TITLE": "Damage formula"
       },
       "DAMAGETYPES": {
+        "SETTING_NAME": "Show Damage Types",
         "TITLE": "Damage Types"
       },
       "DESCRIPTION": "Select the menus to be displayed in ProseMirror.",
       "DETECTPATTERNS": {
+        "SETTING_NAME": "Show Pattern Detection",
         "TITLE": "Pattern Detection"
       },
       "DIALOG": "Configure enricher",
       "HEAL": {
+        "SETTING_NAME": "Show Healing formula",
         "TITLE": "Healing formula"
       },
       "ITEMPROPERTIES": {
+        "SETTING_NAME": "Show Spell Properties",
         "TITLE": "Spell Properties"
       },
       "LOOKUP": {
+        "SETTING_NAME": "Show Lookup",
         "TITLE": "Lookup"
       },
       "RULES": {
+        "SETTING_NAME": "Show Rules",
         "TITLE": "Rules"
       },
       "SAVES": {
+        "SETTING_NAME": "Show Saving Throws",
         "TITLE": "Saving Throws"
       },
       "SKILLS": {
+        "SETTING_NAME": "Show Skills",
         "TITLE": "Skills"
       },
       "STYLE": {
@@ -111,6 +126,7 @@
         "QUEST": "Quest",
         "QUEST_CONTENT": "This is a quest block.",
         "QUEST_TITLE": "Quest",
+        "SETTING_NAME": "Show Styles",
         "TITLE": "Styles",
         "TREASURE": "Treasure",
         "TREASURE_CONTENT": "This is a treasure block.",
@@ -121,6 +137,7 @@
         "TITLE": "Tools"
       },
       "WEAPONMASTERIES": {
+        "SETTING_NAME": "Show Weapon Masteries",
         "TITLE": "Weapon Masteries"
       }
     },
@@ -129,11 +146,6 @@
         "LONG": "Long Format",
         "SHORT": "Short Format",
         "TITLE": "Format"
-      },
-      "MENU": {
-        "HINT": "Configure which items appear in the D&D menu",
-        "LABEL": "Configure Menu Items",
-        "TITLE": "Menu Configuration"
       },
       "PROSEGAP": {
         "HINT": "Reduces the gap to prevent ProseMirror from breaking into two lines when adding D&D menu.",

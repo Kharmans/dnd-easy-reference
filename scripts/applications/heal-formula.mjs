@@ -33,13 +33,12 @@ export default class HealFormulaDialog extends HandlebarsApplicationMixin(
   };
 
   /**
-   * Modèle de données.
    * @type {HealFormulaModel}
    */
   #model = new HealFormulaModel();
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -48,7 +47,7 @@ export default class HealFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -122,7 +121,6 @@ export default class HealFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Gère la soumission du formulaire.
    * @this {HealFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -148,14 +146,13 @@ export default class HealFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Crée une instance de l'application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou null.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
-    //Overrides default data if initial data is found
+    
     if (options.initialData) {
       application.#model.updateSource(options.initialData);
     }
@@ -169,7 +166,7 @@ export default class HealFormulaDialog extends HandlebarsApplicationMixin(
 }
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class HealFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

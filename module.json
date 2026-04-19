@@ -2,15 +2,19 @@
     "id": "dnd-easy-reference",
     "title": "D&D - Easy Reference",
     "description": "Simple solution: add a menu in ProseMirror to get the system references directly in the journal.",
-    "version": "0.0.0.1",
+    "version": "0.0a",
     "compatibility": {
         "minimum": "12",
-        "verified": "13"
+        "verified": "14"
     },
     "authors": [
         {
             "name": "Padhiver",
             "discord": "Padhiver"
+        },
+        {
+            "name": "kgar",
+            "discord": "_kgar"
         }
     ],
     "media": [
@@ -65,13 +69,12 @@
         }
     ],
     "esmodules": [
-        "./scripts/main.js",
-        "./scripts/settings.js"
+        "./main.mjs"
     ],
     "styles": [
         "./styles/menu-config.css"
     ],
-    "manifest": "https://github.com/Padhiver/dnd-easy-reference/releases/latest/download/module.json",
+    "manifest": "https://github.com/kgar/dnd-easy-reference/releases/latest/download/module.json",
     "download": "This is auto replaced",
     "url": "This is auto replaced",
     "relationships": {
@@ -82,7 +85,7 @@
                 "compatibility": {
                     "minimum": "4.0",
                     "verified": "4.0",
-                    "maximum": "5.9"
+                    "maximum": "5.x"
                 }
             }
         ]

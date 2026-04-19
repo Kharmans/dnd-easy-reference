@@ -40,13 +40,12 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
   };
 
   /**
-   * Modèle de données.
    * @type {SaveFormulaModel}
    */
   #model = new SaveFormulaModel();
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -55,7 +54,7 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -128,7 +127,6 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Gère la soumission du formulaire.
    * @this {SaveFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -149,7 +147,6 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Ajoute une nouvelle capacité de sauvegarde.
    * @this {SaveFormulaDialog}
    * @param {PointerEvent} event
    * @param {HTMLElement} target
@@ -163,7 +160,6 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Supprime une capacité de sauvegarde.
    * @this {SaveFormulaDialog}
    * @param {PointerEvent} event
    * @param {HTMLElement} target
@@ -182,14 +178,13 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Crée une instance de l'application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou null.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
-    //Overrides default data if initial data is found
+    
     if (options.initialData) {
       const dataToApply = { ...options.initialData };
       if (
@@ -211,7 +206,7 @@ export default class SaveFormulaDialog extends HandlebarsApplicationMixin(
 }
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class SaveFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

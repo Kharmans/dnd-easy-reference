@@ -3,11 +3,13 @@ const { StringField, BooleanField } = foundry.data.fields;
 
 /**
  * @typedef {object} ConditionConfig
- * @property {string} condition   L'ID de la condition sélectionnée.
- * @property {boolean} apply      Indique si le bouton appliquer doit être affiché.
+ * @property {string} condition   The ID of the selected condition.
+ * @property {boolean} apply      Indicates whether the Apply button should be displayed.
  */
 
-export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(ApplicationV2) {
+export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(
+  ApplicationV2,
+) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["condition-formula-dialog"],
@@ -23,8 +25,8 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
     },
     window: {
       title: "DND.MENU.DIALOG",
-      contentClasses: ["standard-form"]
-    }
+      contentClasses: ["standard-form"],
+    },
   };
 
   /* -------------------------------------------------- */
@@ -36,13 +38,12 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
-    }
-  }
+    },
+  };
 
   /* -------------------------------------------------- */
 
   /**
-   * Modèle de données.
    * @type {ConditionFormulaModel}
    */
   #model = new ConditionFormulaModel();
@@ -50,7 +51,7 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
   /* -------------------------------------------------- */
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {string|null}
    */
   #config = null;
@@ -61,7 +62,7 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
   /* -------------------------------------------------- */
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -86,40 +87,41 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
     const conditionChoices = Object.entries(CONFIG.DND5E.conditionTypes ?? {})
       .filter(([key, data]) => data?.reference)
       .reduce((acc, [key, data]) => {
-        acc[key] = game.i18n.localize(data.label ?? key);
+        // Account for label prop name change over time. Easy compatibility.
+        acc[key] = game.i18n.localize(data.label ?? data.name ?? key);
         return acc;
       }, {});
-
 
     context.condition = {
       field: this.#model.schema.getField("condition"),
       value: this.#model.condition,
       choices: conditionChoices,
       label: game.i18n.localize("DND.MENU.CONDITIONTYPES.TITLE"),
-      placeholder: game.i18n.localize("DND.DIALOG.PLACEHOLDER")
+      placeholder: game.i18n.localize("DND.DIALOG.PLACEHOLDER"),
     };
 
     context.apply = {
       field: this.#model.schema.getField("apply"),
       value: this.#model.apply,
-      label: game.i18n.localize("DND.DIALOG.APPLY")
+      label: game.i18n.localize("DND.DIALOG.APPLY"),
     };
 
-    context.buttons = [{
-      type: "submit",
-      icon: "fa-solid fa-check",
-      label: game.i18n.localize("DND.DIALOG.CONFIRM"),
-    }];
+    context.buttons = [
+      {
+        type: "submit",
+        icon: "fa-solid fa-check",
+        label: game.i18n.localize("DND.DIALOG.CONFIRM"),
+      },
+    ];
 
     return context;
   }
 
   /* -------------------------------------------------- */
-  /* Gestionnaires d'événements                      */
+  /* Event Handlers                                     */
   /* -------------------------------------------------- */
 
   /**
-   * Gère la soumission du formulaire.
    * @this {ConditionFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -133,7 +135,9 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
         break;
       case "submit":
         if (!this.#model.condition) {
-          ui.notifications.warn(game.i18n.localize("DND.DIALOG.CONDITION.WARN_NO_CONDITION"));
+          ui.notifications.warn(
+            game.i18n.localize("DND.DIALOG.CONDITION.WARN_NO_CONDITION"),
+          );
           return;
         }
         this.#config = this.#text;
@@ -144,11 +148,10 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
   }
 
   /* -------------------------------------------------- */
-  /* Méthodes d'usine                                */
+  /* Factory methods                                */
   /* -------------------------------------------------- */
 
   /**
-   * Constructeur.
    * @param {object} data
    */
   constructor(data) {
@@ -157,7 +160,6 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
   }
 
   /**
-   * Crée une instance de l'application.
    * @param {object} [options]
    * @returns {Promise<string|null>}
    */
@@ -168,11 +170,15 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
       application.#model.updateSource(options.initialData);
     }
     application.render({ force: true });
-    application.addEventListener("close", (event) => {
-      if (application.config === null) {
-        resolve(null);
-      }
-    }, { once: true });
+    application.addEventListener(
+      "close",
+      (event) => {
+        if (application.config === null) {
+          resolve(null);
+        }
+      },
+      { once: true },
+    );
     return promise;
   }
 }
@@ -180,7 +186,7 @@ export default class ConditionFormulaDialog extends HandlebarsApplicationMixin(A
 /* -------------------------------------------------- */
 
 /**
- * Modèle de données utilitaire.
+ * The data model representing the form's data.
  */
 class ConditionFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
@@ -197,13 +203,13 @@ class ConditionFormulaModel extends foundry.abstract.DataModel {
         blank: false,
         initial: initialCondition,
         choices: conditionIds,
-        label: "DND.CONDITIONTYPES.TITLE"
+        label: "DND.CONDITIONTYPES.TITLE",
       }),
       apply: new BooleanField({
         required: true,
         initial: true,
-        label: "DND.DIALOG.CONFIRM"
-      })
+        label: "DND.DIALOG.CONFIRM",
+      }),
     };
   }
 }

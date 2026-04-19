@@ -3,7 +3,7 @@ const { StringField } = foundry.data.fields;
 
 /**
  * @typedef {object} RuleConfig
- * @property {string} rule     La règle sélectionnée.
+ * @property {string} rule     The selected rule.
  */
 
 export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
@@ -43,7 +43,6 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Modèle de données.
    * @type {RuleFormulaModel}
    */
   #model = new RuleFormulaModel();
@@ -51,7 +50,7 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Configuration résultante.
+   * Resulting configuration.
    * @type {object|null}
    */
   #config = null;
@@ -62,7 +61,7 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Texte à injecter.
+   * Text to inject.
    * @type {string|null}
    */
   get #text() {
@@ -102,11 +101,10 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Gestionnaires d'événements                     */
+  /* Event Handlers                                     */
   /* -------------------------------------------------- */
 
   /**
-   * Gère la soumission du formulaire.
    * @this {RuleFormulaDialog}
    * @param {SubmitEvent} event
    * @param {HTMLFormElement} form
@@ -126,18 +124,17 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /* Méthodes d'usine                               */
+  /* Factory methods                               */
   /* -------------------------------------------------- */
 
   /**
-   * Crée une instance de l'application.
-   * @param {object} [options]            Options.
-   * @returns {Promise<string|null>}      Le texte, ou null.
+   * @param {object} [options]
+   * @returns {Promise<string|null>}      The text, or `null`.
    */
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
-    //Overrides default data if initial data is found
+    
     if (options.initialData && options.initialData.rule) {
       application.#model.updateSource({ rule: options.initialData.rule });
     }
@@ -152,7 +149,7 @@ export default class RuleFormulaDialog extends HandlebarsApplicationMixin(
 /* -------------------------------------------------- */
 
 /**
- * Modèle de données utilitaire. */
+ * The data model representing the form's data. */
 class RuleFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
   static defineSchema() {
@@ -168,7 +165,7 @@ class RuleFormulaModel extends foundry.abstract.DataModel {
         blank: true,
         choices: () => {
           return Object.keys(rules).reduce((acc, key) => {
-            acc[key] = rules[key]?.label || key;
+            acc[key] = rules[key]?.label ?? key;
             return acc;
           }, {});
         },

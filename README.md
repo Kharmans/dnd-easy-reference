@@ -1,22 +1,24 @@
 # D&D - Easy Reference
-Adds a menu to ProseMirror containing references to the D&D system for quicker, easier additions.
+
+Adds a menu to ProseMirror containing enrichers, references, and stylish journal HTML blocks for the D&D system that can be injected directly into the editor.
 
 https://github.com/user-attachments/assets/6a8b0f9f-9322-4aeb-917f-670c85a47d3b
 
-## About Request
-I'm open to requests if you think other references or other things would be useful in the menu, but I'm not a programmer, it's all just tinkering, so it'll depend on the difficulty!
+## New Edition
+
+This module was originally created by [Padhiver](<https://github.com/Padhiver>). It is now under active development and longterm maintenance by [kgar](<https://github.com/kgar>), with Padhiver and others as collaborators.
 
 ---
 
 ## Supported languages
 - French
 - English
-- Italian - Need a update !
-- Polish - Need a update !
-- Russian - Need a update !
-- Simple Chinese - Need a update !
-- Português (Brasil) - Need a update !
-- Submit a PR to add your own!
+- Italian
+- Polish
+- Russian
+- Simple Chinese
+- Português (Brasil)
+- Submit a PR to add your own! (Hoping to integrate Libro Weblate soon)
 
 ## Supported languages for Pattern Detection
 - French
