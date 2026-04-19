@@ -26,7 +26,7 @@
  * @property {string} title
  * @property {MenuItemClickCallback} [onMenuItemClick]
  * @property {SubMenuItem[] | (() => SubMenuItem[])} [items]
- * @property {MenuConfigItemConfigSetting} setting
+ * @property {MenuConfigItemConfigSetting} [setting]
  */
 
 /**

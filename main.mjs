@@ -3,7 +3,13 @@ import { initSettings } from "./scripts/settings.mjs";
 
 const Hooks = foundry.helpers.Hooks;
 
-Hooks.once("init", () => {
+Hooks.once("i18nInit", () => {
+  // Allow outside scripts to change the menu.
+  Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", MENU_CONFIG_ITEMS);
+
+  // Put in CONFIG.
+  CONFIG.DND_EASY_REFERENCE = { MENU_CONFIG_ITEMS };
+
   initSettings();
 });
 
@@ -16,9 +22,11 @@ Hooks.once("ready", () => {
 
 Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
   const entries = Object.entries(MENU_CONFIG_ITEMS)
-    // Only show enabled options
-    .filter(([_, value]) =>
-      game.settings.get("dnd-easy-reference", value.setting.key),
+    // Only show enabled options or those without settings
+    .filter(
+      ([_, value]) =>
+        !value.setting?.key ||
+        game.settings.get("dnd-easy-reference", value.setting.key),
     )
     // Create menu items
     .map(([key, value]) => ({

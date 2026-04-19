@@ -19,6 +19,7 @@ export function initSettings() {
   });
 
   Object.values(MENU_CONFIG_ITEMS)
+    .filter((item) => item.setting?.key && item.setting?.name)
     .toSorted((a, b) =>
       game.i18n
         .localize(a.setting.name)
