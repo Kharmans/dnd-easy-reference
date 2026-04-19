@@ -1,7 +1,7 @@
 /** @import { SubMenuItem } from '../_types.mjs' */
 
 import { startPatternScan } from "./pattern-scanner.mjs";
-import { insertText } from "../utils.mjs";
+import { insertText } from "../prose-mirror/utils.mjs";
 
 /**
  * Gets the submenu items for the Pattern Detection menu.

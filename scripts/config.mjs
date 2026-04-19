@@ -11,7 +11,7 @@ import HealFormulaDialog from "./applications/heal-formula.mjs";
 import LookupFormulaDialog from "./applications/lookup-formula.mjs";
 import RuleFormulaDialog from "./applications/rule-formula.mjs";
 import SaveFormulaDialog from "./applications/save-formula.mjs";
-import { insertText } from "./utils.mjs";
+import { insertText } from "./prose-mirror/utils.mjs";
 import { createReferenceSubMenuEntriesFromSourceData } from "./reference.mjs";
 import { getDetectionSubMenuItems } from "./detection/menu-setup.mjs";
 import { getStyleMenuSubItems } from "./style-blocks/menu-setup.mjs";
