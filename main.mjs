@@ -1,19 +1,24 @@
 import { MENU_CONFIG } from "./scripts/config.mjs";
 import { initSettings } from "./scripts/settings.mjs";
+import { replaceSelection } from "./scripts/prose-mirror/utils.mjs";
 
 const Hooks = foundry.helpers.Hooks;
 
 Hooks.once("i18nInit", () => {
+  // Init settings at this startup phase because of localized setting sorting.
+  initSettings(MENU_CONFIG);
+
   // Allow outside scripts to change the menu.
   Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", MENU_CONFIG);
 
   // Put menu config in CONFIG.
   CONFIG.DND_EASY_REFERENCE = {
     MENU_CONFIG,
+    api: {
+      replaceSelection: replaceSelection
+    }
   };
 
-  // Init settings at this startup phase because of localized setting sorting.
-  initSettings(MENU_CONFIG);
 });
 
 Hooks.once("ready", () => {
