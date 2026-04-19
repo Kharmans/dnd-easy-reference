@@ -10,7 +10,7 @@ jobs:
     steps:
     # Checkout files from Github
     - name: Checkout files
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6.0.2
       with:
         submodules: recursive
 
