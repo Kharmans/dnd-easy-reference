@@ -2,8 +2,11 @@
 
 /** @import { SubMenuItem } from '../_types.mjs' */
 
-import { getCalloutHtml, getPullQuoteHtml } from "./system-html.mjs";
-import { insertText, replaceSelection } from "../prose-mirror/utils.mjs";
+import { getCalloutNode, getPullQuoteHtml } from "./system-html.mjs";
+import {
+  replaceSelection,
+  replaceSelectionWithNode,
+} from "../prose-mirror/utils.mjs";
 
 /**
  *
@@ -15,16 +18,17 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.ADVICE",
       key: "advice",
       onMenuItemClick: async (menu) => {
-        const html = getCalloutHtml({
+        const node = getCalloutNode({
+          menu,
           cssClass: "fvtt advice",
           icon: "icons/vtt-512.png",
           title: "DND.MENU.STYLE.ADVICE_TITLE",
           text: "DND.MENU.STYLE.ADVICE_CONTENT",
         });
 
-        replaceSelection({
+        replaceSelectionWithNode({
           menu,
-          html,
+          node,
         });
       },
     },
@@ -32,16 +36,17 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.QUEST",
       key: "quest",
       onMenuItemClick: async (menu) => {
-        const html = getCalloutHtml({
+        const node = getCalloutNode({
+          menu,
           cssClass: "fvtt quest",
           icon: "icons/magic/symbols/question-stone-yellow.webp",
           title: "DND.MENU.STYLE.QUEST_TITLE",
           text: "DND.MENU.STYLE.QUEST_CONTENT",
         });
 
-        replaceSelection({
+        replaceSelectionWithNode({
           menu,
-          html,
+          node,
         });
       },
     },
@@ -49,16 +54,17 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.TREASURE",
       key: "treasure",
       onMenuItemClick: async (menu) => {
-        const html = getCalloutHtml({
+        const node = getCalloutNode({
+          menu,
           cssClass: "fvtt quest",
           icon: "icons/containers/chest/chest-wooden-tied-white.webp",
           title: "DND.MENU.STYLE.TREASURE_TITLE",
           text: "DND.MENU.STYLE.TREASURE_CONTENT",
         });
 
-        replaceSelection({
+        replaceSelectionWithNode({
           menu,
-          html,
+          node,
         });
       },
     },
@@ -66,7 +72,7 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.NARRATIVE",
       key: "narrative",
       onMenuItemClick: async (menu) => {
-        const html = `<div class="fvtt narrative"><selection></selection></div>`;
+        const html = `<div class="fvtt narrative"><selection>&nbsp;</selection></div>`;
 
         replaceSelection({
           menu,
@@ -78,7 +84,7 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.NOTABLE",
       key: "notable",
       onMenuItemClick: async (menu) => {
-        const html = `<aside class="notable"><selection></selection></aside>`;
+        const html = `<aside class="notable"><selection>&nbsp;</selection></aside>`;
 
         replaceSelection({
           menu,

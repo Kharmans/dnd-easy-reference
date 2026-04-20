@@ -34,12 +34,7 @@ export function insertText({ text, menu }) {
  * @returns {void}
  */
 export function replaceSelection({ menu, html }) {
-  const state = menu.view.state;
-  const { $from, $to } = state.selection;
-
-  // Replace selection default content with selected text, if any.
-  let selection =
-    $from && $to ? state.doc.textBetween($from.pos, $to.pos) : undefined;
+  const selection = getSelectedText(menu);
 
   html = html.replace(/<selection>(.*?)<\/selection>/, function (match, alt) {
     return selection || alt || "";
@@ -47,5 +42,16 @@ export function replaceSelection({ menu, html }) {
 
   const node = ProseMirror.dom.parseString(html);
 
-  menu.view.dispatch(state.tr.replaceSelectionWith(node));
+  replaceSelectionWithNode({ menu, node });
+}
+
+export function replaceSelectionWithNode({ menu, node }) {
+  menu.view.dispatch(menu.view.state.tr.replaceSelectionWith(node));
+}
+
+export function getSelectedText(menu) {
+  const state = menu.view.state;
+  const { $from, $to } = state.selection;
+
+  return $from && $to ? state.doc.textBetween($from.pos, $to.pos) : undefined;
 }

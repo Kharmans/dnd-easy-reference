@@ -1,16 +1,39 @@
-export function getCalloutHtml({ title, text, cssClass, icon }) {
-  return `
-<div class="${cssClass}">
-  <figure class="icon">
-    <img src="${icon}" class="round" />
-  </figure>
-  <article>
-    <h4>${game.i18n.localize(title)}</h4>
-    <p>
-      <selection>${game.i18n.localize(text)}</selection>
-    </p>
-  </article>
-</div>`;
+import { getSelectedText } from "../prose-mirror/utils.mjs";
+
+/**
+ * 
+ * @param {*} params 
+ * @returns 
+ */
+export function getCalloutNode({ menu, title, text, cssClass, icon }) {
+  const schema = menu.schema;
+
+  let content = getSelectedText(menu);
+
+  if (!content?.length) {
+    content = text ?? " ";
+  }
+
+  const node = schema.nodes.div.create({ _preserve: { class: cssClass } }, [
+    schema.nodes.figure.create({ _preserve: { class: "icon" } }, [
+      schema.nodes.image.create({
+        src: icon,
+        _preserve: { class: "round" },
+      }),
+    ]),
+    schema.nodes.article.create(null, [
+      schema.nodes.heading.create(
+        { level: 4 },
+        schema.text(game.i18n.localize(title)),
+      ),
+      schema.nodes.paragraph.create(
+        null,
+        schema.text(game.i18n.localize(content)),
+      ),
+    ]),
+  ]);
+
+  return node;
 }
 
 export function getPullQuoteHtml({ cssClass }) {
