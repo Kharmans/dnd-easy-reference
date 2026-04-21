@@ -117,6 +117,7 @@ export function getStyleMenuSubItems() {
       },
     },
     {
+      // For dnd5e 5.3.x or higher
       title: "DND.MENU.STYLE.PULL_QUOTE_LEFT",
       key: "pull-quote-left",
       onMenuItemClick: async (menu) => {
@@ -125,6 +126,7 @@ export function getStyleMenuSubItems() {
       },
     },
     {
+      // For dnd5e 5.3.x or higher
       title: "DND.MENU.STYLE.PULL_QUOTE_RIGHT",
       key: "pull-quote-right",
       onMenuItemClick: async (menu) => {
