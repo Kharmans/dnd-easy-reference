@@ -5,9 +5,7 @@
  * @property {string} title   The text to show for the menu item.
  * @property {MenuItemClickCallback} [onMenuItemClick]    What to do when the menu item is clicked.
  * @property {SubMenuItem[] | (() => SubMenuItem[])} [items]    Submenu items, or a function for retrieving submenu items.
- * @property {MenuConfigItemConfigSetting} [setting]    Optional opt-in to have this menu item appear 
- *                                                      in the module's settings for toggling on/off.
- *                                                      To opt-out, don't set this property.
+ * @property {MenuConfigItemConfigSetting} [setting]    For internal use only. Sets up visibility toggle settings for built-in easy references.
  */
 
 /**
