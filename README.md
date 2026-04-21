@@ -13,6 +13,14 @@ This module was originally created by [Padhiver](<https://github.com/Padhiver>).
 
 The [previous version](<https://github.com/Padhiver/dnd-easy-reference>) and [its releases](<https://github.com/Padhiver/dnd-easy-reference/releases>).
 
+## Get Involved
+
+kgar modules run on community feedback! This and any of kgar's modules are up for discussion on the [Tidy 5e Sheets community Discord](https://discord.gg/dQWAnm59vq). Why there? All kinds of cool people hang out there. Or, put in a [GitHub issue](https://github.com/kgar/dnd-easy-reference/issues) if you find something amiss.
+
+### **kgar**  • 👨‍💻 development
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/iamkgar) [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kgar)
+
 ## Demo
 
 https://github.com/user-attachments/assets/6a8b0f9f-9322-4aeb-917f-670c85a47d3b
