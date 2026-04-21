@@ -60,10 +60,10 @@ jobs:
     - name: Read module metadata
       id: module
       run: |
-        echo "title=$(jq -r '.title' dist/module.json)" >> $GITHUB_OUTPUT
-        echo "compat_min=$(jq -r '.compatibility.minimum' dist/module.json)" >> $GITHUB_OUTPUT
-        echo "compat_verified=$(jq -r '.compatibility.verified' dist/module.json)" >> $GITHUB_OUTPUT
-        COMPAT_MAX=$(jq -r '.compatibility.maximum // empty' dist/module.json)
+        echo "title=$(jq -r '.title' module.json)" >> $GITHUB_OUTPUT
+        echo "compat_min=$(jq -r '.compatibility.minimum' module.json)" >> $GITHUB_OUTPUT
+        echo "compat_verified=$(jq -r '.compatibility.verified' module.json)" >> $GITHUB_OUTPUT
+        COMPAT_MAX=$(jq -r '.compatibility.maximum // empty' module.json)
         echo "compat_max=$COMPAT_MAX" >> $GITHUB_OUTPUT
 
     # Post release notification to Discord
