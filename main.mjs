@@ -22,13 +22,6 @@ Hooks.once("i18nInit", () => {
   };
 });
 
-Hooks.once("ready", () => {
-  // TODO: Handle detached windows for Foundry 14 ;)
-  if (game.settings.get("dnd-easy-reference", "widenItemWindows")) {
-    document.documentElement.classList.add("dnd-widen-windows");
-  }
-});
-
 Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
   const entries = Object.entries(CONFIG.DND_EASY_REFERENCE.MENU_CONFIG)
     // Only show enabled options or those without settings

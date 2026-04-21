@@ -119,10 +119,6 @@
         "TITLE": "Configuração do Menu",
         "LABEL": "Configurar Itens do Menu",
         "HINT": "Configurar quais itens aparecem no menu D&D"
-      },
-       "PROSEGAP": {
-          "HINT": "Reduz o espaço para evitar que o ProseMirror quebre em duas linhas ao adicionar o menu D&D.",
-          "TITLE": "Redução de Espaço do ProseMirror"
       }
     }
   }

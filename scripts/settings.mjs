@@ -1,27 +1,10 @@
 /** @import { MenuConfigItem } from './_types.mjs' */
 
 /**
- *
+ * Establish config settings for toggling visibility of each type of easy reference menu item.
  * @param {Record<string, MenuConfigItem>} items
  */
 export function initSettings(items) {
-  game.settings.register("dnd-easy-reference", "widenItemWindows", {
-    name: game.i18n.localize("DND.SETTINGS.PROSEGAP.TITLE"),
-    hint: game.i18n.localize("DND.SETTINGS.PROSEGAP.HINT"),
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: false,
-    requiresReload: true,
-    onChange: (value) => {
-      if (value) {
-        document.documentElement.classList.add("dnd-widen-windows");
-      } else {
-        document.documentElement.classList.remove("dnd-widen-windows");
-      }
-    },
-  });
-
   Object.values(items)
     .filter((item) => item.setting?.key && item.setting?.name)
     .toSorted((a, b) =>

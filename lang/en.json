@@ -156,10 +156,6 @@
         "LONG": "Long Format",
         "SHORT": "Short Format",
         "TITLE": "Format"
-      },
-      "PROSEGAP": {
-        "HINT": "Reduces the gap to prevent ProseMirror from breaking into two lines when adding D&D menu.",
-        "TITLE": "ProseMirror Gap Reduction"
       }
     }
   }

@@ -122,10 +122,6 @@
         "HINT": "Konfiguracja elementów wyświetlanych w menu D&D",
         "LABEL": "Konfiguracja elementów menu",
         "TITLE": "Konfiguracja menu"
-      },
-      "PROSEGAP": {
-        "HINT": "Zmniejsza odstęp, aby zapobiec rozpadaniu się ProseMirror na dwie linie podczas dodawania menu D&D.",
-        "TITLE": "Redukcja luk ProseMirror"
       }
     }
   }
