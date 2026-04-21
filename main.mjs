@@ -4,22 +4,28 @@ import { insertText, replaceSelection } from "./scripts/prose-mirror/utils.mjs";
 
 const Hooks = foundry.helpers.Hooks;
 
-Hooks.once("i18nInit", () => {
-  const menuConfig = getMenuConfig();
-  // Init settings at this startup phase because of localized setting sorting.
-  initSettings(menuConfig);
-
-  // Allow outside scripts to change the menu.
-  Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", menuConfig);
-
-  // Put menu config in CONFIG.
+Hooks.once('init', () => {
+  // Establish API as early as possible.
   CONFIG.DND_EASY_REFERENCE = {
-    MENU_CONFIG: menuConfig,
     api: {
       replaceSelection,
       insertText,
     },
   };
+};
+
+Hooks.once("i18nInit", () => {
+  // To allow for localized sorting, we create the menu config at this stage in startup.
+  const menuConfig = getMenuConfig();
+  
+  // Init settings at this startup phase because of localized setting sorting.
+  initSettings(menuConfig);
+  
+  // Allow outside scripts to change the menu.
+  Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", menuConfig);
+
+  // Put menu config in CONFIG.
+  CONFIG.DND_EASY_REFERENCE.MENU_CONFIG = menuConfig;
 });
 
 Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
