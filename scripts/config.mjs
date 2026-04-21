@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @import { MenuConfigItem } from "./_types.mjs" */
+/** @import { MenuConfigItem, SubMenuItem } from "./_types.mjs" */
 
 import AttackFormulaDialog from "./applications/attack-formula.mjs";
 import AwardFormulaDialog from "./applications/award-formula.mjs";
@@ -226,7 +226,7 @@ export function getMenuConfig() {
         key: "showdetectPatterns",
         name: "DND.MENU.DETECTPATTERNS.SETTING_NAME",
       },
-      items: () => getDetectionSubMenuItems(),
+      items: () => getDetectionSubMenuItems().sort(localeSort),
     },
     styles: {
       title: "DND.MENU.STYLE.TITLE",
@@ -234,7 +234,17 @@ export function getMenuConfig() {
         key: "showstyle",
         name: "DND.MENU.STYLE.SETTING_NAME",
       },
-      items: getStyleMenuSubItems(),
+      items: getStyleMenuSubItems().sort(localeSort),
     },
   };
+}
+
+/**
+ * Sorts a menu config or submenu item by title.
+ * @param {MenuConfigItem|SubMenuItem} a
+ * @param {MenuConfigItem|SubMenuItem} b
+ * @returns
+ */
+function localeSort(a, b) {
+  return game.i18n.localize(a.title).localeCompare(game.i18n.localize(b.title));
 }
