@@ -1,5 +1,5 @@
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
-const { BooleanField, NumberField } = foundry.data.fields;
+const { BooleanField, NumberField, SchemaField } = foundry.data.fields;
 
 /**
  * @typedef {object} AwardConfig
@@ -10,7 +10,9 @@ const { BooleanField, NumberField } = foundry.data.fields;
  * @property {boolean} each       Denotes whether the award is for each character (true) or to divide amongst the character (false).
  */
 
-export default class AwardFormulaDialog extends HandlebarsApplicationMixin(ApplicationV2) {
+export default class AwardFormulaDialog extends HandlebarsApplicationMixin(
+  ApplicationV2,
+) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["award-formula-dialog"],
@@ -68,35 +70,37 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
    */
   get #text() {
     const parts = [];
-    
+
     if (this.#model.xp > 0) {
       parts.push(`${this.#model.xp}xp`);
     }
-    
+
     const currency = [];
-    if (this.#model.gp > 0) currency.push(`${this.#model.gp}gp`);
-    if (this.#model.sp > 0) currency.push(`${this.#model.sp}sp`);
-    if (this.#model.cp > 0) currency.push(`${this.#model.cp}cp`);
-    
+    Object.entries(this.#model.currencies).forEach(([key, value]) => {
+      if (value > 0) {
+        currency.push(`${value}${key}`);
+      }
+    });
+
     if (currency.length > 0) {
       parts.push(currency.join(" "));
     }
-    
+
     if (parts.length === 0) return null;
-    
+
     let command = parts.join(" ");
-    
+
     if (this.#model.each) {
       command += " each";
     }
-    
+
     return `[[/award ${command}]]`;
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _prepareContext(options) {
+  async _prepareContext(_options) {
     const context = {};
 
     context.xp = {
@@ -104,20 +108,12 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
       value: this.#model.xp,
     };
 
-    context.gp = {
-      field: this.#model.schema.getField("gp"),
-      value: this.#model.gp,
-    };
-
-    context.sp = {
-      field: this.#model.schema.getField("sp"),
-      value: this.#model.sp,
-    };
-
-    context.cp = {
-      field: this.#model.schema.getField("cp"),
-      value: this.#model.cp,
-    };
+    context.currencies = this.#model.schema.fields.currencies
+      .values()
+      .map((v) => ({
+        field: v,
+        value: v.initial,
+      }));
 
     context.each = {
       field: this.#model.schema.getField("each"),
@@ -169,7 +165,7 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
   static async create(options = {}) {
     const { promise, resolve } = Promise.withResolvers();
     const application = new this(options);
-    
+
     if (options.initialData) {
       const dataToApply = foundry.utils.deepClone(options.initialData);
       application.#model.updateSource(dataToApply);
@@ -191,6 +187,18 @@ export default class AwardFormulaDialog extends HandlebarsApplicationMixin(Appli
 class AwardFormulaModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
   static defineSchema() {
+    const currencies = Object.entries(CONFIG.DND5E.currencies)
+      .toSorted((a, b) => a[1].conversion - b[1].conversion)
+      .reduce((prev, [key, value]) => {
+        prev[key] = new NumberField({
+          label: value.label,
+          min: 0,
+          integer: true,
+          initial: 0,
+        });
+        return prev;
+      }, {});
+
     return {
       xp: new NumberField({
         label: "DND.DIALOG.XP",
@@ -198,24 +206,7 @@ class AwardFormulaModel extends foundry.abstract.DataModel {
         integer: true,
         initial: 0,
       }),
-      gp: new NumberField({
-        label: "DND.DIALOG.GOLD",
-        min: 0,
-        integer: true,
-        initial: 0,
-      }),
-      sp: new NumberField({
-        label: "DND.DIALOG.SILVER",
-        min: 0,
-        integer: true,
-        initial: 0,
-      }),
-      cp: new NumberField({
-        label: "DND.DIALOG.COPPER",
-        min: 0,
-        integer: true,
-        initial: 0,
-      }),
+      currencies: new SchemaField(currencies),
       each: new BooleanField({
         label: "DND.DIALOG.EACH",
         initial: false,
