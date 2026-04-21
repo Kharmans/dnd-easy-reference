@@ -9,8 +9,8 @@ import {
 } from "../prose-mirror/utils.mjs";
 
 /**
- *
- * @returns {SubMenuItem[]}
+ * Creates the system HTML style block options
+ * @returns {SubMenuItem[]} the submenu items to include
  */
 export function getStyleMenuSubItems() {
   return [
@@ -120,7 +120,7 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.PULL_QUOTE_LEFT",
       key: "pull-quote-left",
       onMenuItemClick: async (menu) => {
-        const html = getPullQuoteHtml({ cssClass: "float-left" });
+        const html = getPullQuoteHtml({ menu, cssClass: "float-left" });
         replaceSelection({ html, menu });
       },
     },
@@ -128,7 +128,7 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.PULL_QUOTE_RIGHT",
       key: "pull-quote-right",
       onMenuItemClick: async (menu) => {
-        const html = getPullQuoteHtml({ cssClass: "float-right" });
+        const html = getPullQuoteHtml({ menu, cssClass: "float-right" });
         replaceSelection({ html, menu });
       },
     },
