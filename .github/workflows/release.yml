@@ -72,7 +72,7 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         RELEASE_BODY: ${{ github.event.release.body }}
         MODULE_TITLE: ${{ steps.module.outputs.title }}
-        VERSION: ${{ env.VERSION }}
+        VERSION: ${{ github.event.release.tag_name }}
         COMPAT_MIN: ${{ steps.module.outputs.compat_min }}
         COMPAT_MAX: ${{ steps.module.outputs.compat_max }}
         RELEASE_PAGE: https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}
