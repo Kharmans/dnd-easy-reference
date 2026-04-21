@@ -4,6 +4,10 @@ The module calls the hook "dnd-easy-reference.prepareConfigMenuItems" and passes
 
 [Menu Config Types](<https://github.com/kgar/dnd-easy-reference/blob/main/scripts/_types.mjs>)
 
+> [!IMPORTANT]
+> Your menu config key must be unique, or you will override an existing Easy Reference menu option.
+> Submenu keys must be unique from each other, but they will automatically be made unique from other submenus' items.
+
 Example - adding a top-level menu item that does something:
 ```js
 Hooks.once("dnd-easy-reference.prepareConfigMenuItems", (configs) => {
@@ -22,8 +26,8 @@ Example - adding a menu with submenu items:
 Hooks.once("dnd-easy-reference.prepareConfigMenuItems", (configs) => {
     const api = CONFIG.DND_EASY_REFERENCE.api;
     
-    configs['myCustomMenuWithSubMenusConfig'] = {
-        title: "My Nested Menu",
+    configs['myImportantActors'] = {
+        title: "Important Actors",
         items: [
             {
                 key: 'the-party',
