@@ -1,19 +1,20 @@
-import { MENU_CONFIG } from "./scripts/config.mjs";
+import { getMenuConfig } from "./scripts/config.mjs";
 import { initSettings } from "./scripts/settings.mjs";
 import { insertText, replaceSelection } from "./scripts/prose-mirror/utils.mjs";
 
 const Hooks = foundry.helpers.Hooks;
 
 Hooks.once("i18nInit", () => {
+  const menuConfig = getMenuConfig();
   // Init settings at this startup phase because of localized setting sorting.
-  initSettings(MENU_CONFIG);
+  initSettings(menuConfig);
 
   // Allow outside scripts to change the menu.
-  Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", MENU_CONFIG);
+  Hooks.callAll("dnd-easy-reference.prepareConfigMenuItems", menuConfig);
 
   // Put menu config in CONFIG.
   CONFIG.DND_EASY_REFERENCE = {
-    MENU_CONFIG,
+    MENU_CONFIG: menuConfig,
     api: {
       replaceSelection,
       insertText,
@@ -29,7 +30,7 @@ Hooks.once("ready", () => {
 });
 
 Hooks.on("getProseMirrorMenuDropDowns", (proseMirrorMenu, dropdowns) => {
-  const entries = Object.entries(MENU_CONFIG)
+  const entries = Object.entries(CONFIG.DND_EASY_REFERENCE.MENU_CONFIG)
     // Only show enabled options or those without settings
     .filter(
       ([_, value]) =>
