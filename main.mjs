@@ -12,7 +12,7 @@ Hooks.once('init', () => {
       insertText,
     },
   };
-};
+});
 
 Hooks.once("i18nInit", () => {
   // To allow for localized sorting, we create the menu config at this stage in startup.
