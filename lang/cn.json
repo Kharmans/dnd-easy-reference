@@ -117,10 +117,6 @@
         "HINT": "配置D&D菜单中显示的项目",
         "LABEL": "配置菜单项",
         "TITLE": "菜单配置"
-      },
-      "PROSEGAP": {
-        "HINT": "减少间隙以防止添加D&D菜单时ProseMirror分成两行",
-        "TITLE": "ProseMirror间隙减少"
       }
     }
   }

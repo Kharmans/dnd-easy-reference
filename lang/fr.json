@@ -134,10 +134,6 @@
         "HINT": "Configurer les enrichisseurs qui apparaissent dans le menu D&D",
         "LABEL": "Configurer les enrichisseurs",
         "TITLE": "Configuration du menu"
-      },
-      "PROSEGAP": {
-        "HINT": "Réduit l'écart de ProseMirror pour éviter que l'ajout du menu D&D ne force à passer sur deux lignes.",
-        "TITLE": "Réduction de l'écart ProseMirror"
       }
     }
   }

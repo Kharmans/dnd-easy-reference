@@ -122,10 +122,6 @@
         "HINT": "Configura quale oggetto appare nel menu D&D",
         "LABEL": "Configura Menu Oggetti",
         "TITLE": "Menu Configurazione"
-      },
-      "PROSEGAP": {
-        "HINT": "Riduce lo spazio per evitare che ProseMirror si divida in due righe quando si aggiunge un menu D&D.",
-        "TITLE": "Riduzione Spazio ProseMirror"
       }
     }
   }
