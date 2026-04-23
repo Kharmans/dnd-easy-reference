@@ -1,4 +1,4 @@
-/** @import { MenuConfigItem } from './_types.mjs' */
+/** @import { MenuConfigItem } from './types/_types.mjs' */
 
 /**
  * Establish config settings for toggling visibility of each type of easy reference menu item.

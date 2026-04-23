@@ -13,7 +13,8 @@
     "foundry/dnd5e/**/*.mjs",
     "foundry/client/client.mjs",
     "foundry/client/global.d.mts",
-    "foundry/common/primitives/global.d.mts"
+    "foundry/common/primitives/global.d.mts",
+    "scripts/types/foundry.d.ts"
   ],
   "typeAcquisition": {
     "include": ["jquery"]
