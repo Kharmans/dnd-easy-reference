@@ -10,6 +10,7 @@ declare global {
   class Hooks extends foundry.helpers.Hooks {}
   const fromUuid = foundry.utils.fromUuid;
   const fromUuidSync = foundry.utils.fromUuidSync;
+  // TODO: make this not any
   const game: any;
 }
 
