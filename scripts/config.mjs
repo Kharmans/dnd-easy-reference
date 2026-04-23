@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @import { MenuConfigItem, SubMenuItem } from "./_types.mjs" */
+/** @import { MenuConfigItem, SubMenuItem } from "./types/_types.mjs" */
 
 import AttackFormulaDialog from "./applications/attack-formula.mjs";
 import AwardFormulaDialog from "./applications/award-formula.mjs";

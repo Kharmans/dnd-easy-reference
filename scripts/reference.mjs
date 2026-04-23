@@ -1,4 +1,4 @@
-/** @import { SubMenuItem } from './_types.mjs' */
+/** @import { SubMenuItem } from './types/_types.mjs' */
 
 /**
  * @typedef SourceDataMenuEntriesOptions

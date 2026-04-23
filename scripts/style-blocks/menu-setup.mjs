@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @import { SubMenuItem } from '../_types.mjs' */
+/** @import { SubMenuItem } from '../types/_types.mjs' */
 
 import { getCalloutNode, getPullQuoteHtml } from "./system-html.mjs";
 import {
