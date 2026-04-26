@@ -6,6 +6,7 @@ import { getCalloutNode, getPullQuoteHtml } from "./system-html.mjs";
 import {
   replaceSelection,
   replaceSelectionWithNode,
+  toggleBlock,
 } from "../prose-mirror/utils.mjs";
 
 /**
@@ -72,24 +73,14 @@ export function getStyleMenuSubItems() {
       title: "DND.MENU.STYLE.NARRATIVE",
       key: "narrative",
       onMenuItemClick: async (menu) => {
-        const html = `<div class="fvtt narrative"><selection>&nbsp;</selection></div>`;
-
-        replaceSelection({
-          menu,
-          html,
-        });
+        toggleBlock({ menu, class: "fvtt narrative", type: "div" });
       },
     },
     {
       title: "DND.MENU.STYLE.NOTABLE",
       key: "notable",
       onMenuItemClick: async (menu) => {
-        const html = `<aside class="notable"><selection>&nbsp;</selection></aside>`;
-
-        replaceSelection({
-          menu,
-          html,
-        });
+        toggleBlock({ menu, class: "notable", type: "aside" });
       },
     },
     {
