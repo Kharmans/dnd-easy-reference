@@ -55,3 +55,20 @@ export function getSelectedText(menu) {
 
   return $from && $to ? state.doc.textBetween($from.pos, $to.pos) : undefined;
 }
+
+/**
+ * Toggles a block around the current block of content. This functions
+ * just like Secret Blocks, for example.
+ * @param {Object} options        the options for toggling the block
+ * @property {any} menu           the ProseMirrorMenu instance
+ * @property {string} [class]     a class to apply when toggling the block
+ * @property {string} type        the schema member (div, paragraph, aside, figure, etc.)
+ *                                to use as the block
+ */
+export function toggleBlock({ menu, class: cssClass, type }) {
+  menu._toggleBlock(
+    menu.schema.nodes[type],
+    foundry.prosemirror.commands.wrapIn,
+    { attrs: { _preserve: { class: cssClass } } },
+  );
+}
