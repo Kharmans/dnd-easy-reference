@@ -1,7 +1,9 @@
-import { getSelectedText } from "../prose-mirror/utils.mjs";
+import { getSelectedText, sliceSelection } from "../prose-mirror/utils.mjs";
 
 /**
- * Creates the Foundry callout node.
+ * Creates the Foundry callout node. When content is selected,
+ * this will extract the selected content and put it within
+ * the content area of the callout.
  * @param {Object} params  the fields needed for creating
  * @param {any} params.menu a ProseMirrorMenu instance
  * @param {string} params.title the callout title
@@ -13,7 +15,18 @@ import { getSelectedText } from "../prose-mirror/utils.mjs";
 export function getCalloutNode({ menu, title, text, cssClass, icon }) {
   const schema = menu.schema;
 
-  let content = getSelectedText(menu) || text || " ";
+  const sliced = sliceSelection(menu);
+
+  let articleNodes = [];
+
+  if (sliced) {
+    articleNodes.push(...sliced);
+  } else {
+    let content = game.i18n.localize(text || " ");
+    articleNodes.push(
+      schema.nodes.paragraph.create(null, schema.text(content)),
+    );
+  }
 
   const node = schema.nodes.div.create({ _preserve: { class: cssClass } }, [
     schema.nodes.figure.create({ _preserve: { class: "icon" } }, [
@@ -27,10 +40,7 @@ export function getCalloutNode({ menu, title, text, cssClass, icon }) {
         { level: 4 },
         schema.text(game.i18n.localize(title)),
       ),
-      schema.nodes.paragraph.create(
-        null,
-        schema.text(game.i18n.localize(content)),
-      ),
+      ...articleNodes,
     ]),
   ]);
 
