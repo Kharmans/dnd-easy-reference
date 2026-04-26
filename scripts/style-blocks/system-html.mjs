@@ -1,4 +1,10 @@
-import { getSelectedText, sliceSelection } from "../prose-mirror/utils.mjs";
+// @ts-check
+
+import {
+  getBlockNodeFromCursorLocation,
+  getSelectedText,
+  sliceSelection,
+} from "../prose-mirror/utils.mjs";
 
 /**
  * Creates the Foundry callout node. When content is selected,
@@ -15,12 +21,18 @@ import { getSelectedText, sliceSelection } from "../prose-mirror/utils.mjs";
 export function getCalloutNode({ menu, title, text, cssClass, icon }) {
   const schema = menu.schema;
 
-  const sliced = sliceSelection(menu);
+  const nodes =
+    // if content is selected, slice it
+    sliceSelection(menu) ??
+    // if no selection, then select the entire block
+    // and reference as an array of 1 
+    getBlockNodeFromCursorLocation({ menu, selectBlockOnSuccess: true });
 
   let articleNodes = [];
 
-  if (sliced) {
-    articleNodes.push(...sliced);
+  // only interpolate nodes if they actually have some text content
+  if (nodes?.some((n) => !!n.textContent?.trim().length)) {
+    articleNodes.push(...nodes);
   } else {
     let content = game.i18n.localize(text || " ");
     articleNodes.push(
@@ -50,8 +62,8 @@ export function getCalloutNode({ menu, title, text, cssClass, icon }) {
 /**
  * Creates HTML for a pull quote.
  * @param {Object} params the parameters needed for creating the HTML
- * @param {any} menu a ProseMirrorMenu instance
- * @param {string} cssClass extra classes for the containing element
+ * @param {any} params.menu a ProseMirrorMenu instance
+ * @param {string} params.cssClass extra classes for the containing element
  * @returns
  */
 export function getPullQuoteHtml({ menu, cssClass }) {
