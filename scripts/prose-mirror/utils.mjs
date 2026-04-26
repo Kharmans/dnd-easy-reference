@@ -57,6 +57,26 @@ export function getSelectedText(menu) {
 }
 
 /**
+ * Slices the selection content into an array of nodes.
+ * @param {any} menu          the ProseMirrorMenuInstance 
+ * @returns {any[]|undefined} an array of nodes, if there is 
+ *                            at least one node to return
+ */
+export function sliceSelection(menu) {
+  const state = menu.view.state;
+  const { $from, $to } = state.selection;
+
+  const fragment =
+    $from && $to ? state.doc.slice($from.pos, $to.pos) : undefined;
+
+  if (!fragment || !fragment.content.content.length) {
+    return undefined;
+  }
+
+  return fragment.content.content;
+}
+
+/**
  * Toggles a block around the current block of content. This functions
  * just like Secret Blocks, for example.
  * @param {Object} options        the options for toggling the block
