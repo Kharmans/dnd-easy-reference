@@ -1,3 +1,7 @@
+// @ts-check
+
+/** @import { PatternDefinitions } from "../types/_types.mjs" */
+
 import { patternDefinitions } from "./patterns.mjs";
 import PatternPromptDialog from "../applications/pattern-prompt-dialog.mjs";
 
@@ -8,8 +12,21 @@ import SaveFormulaDialog from "../applications/save-formula.mjs";
 import AttackFormulaDialog from "../applications/attack-formula.mjs";
 import ConditionFormulaDialog from "../applications/condition-formula.mjs";
 import RuleFormulaDialog from "../applications/rule-formula.mjs";
+import { localize } from "./utils.mjs";
 
-// State to track the ongoing scan process
+/**
+ * @type {{
+ *   active: boolean,
+ *   type: unknown,
+ *   lastIndex: number,
+ *   proseMirrorMenu: any|null,
+ *   patternConfig: PatternDefinitions[keyof PatternDefinitions]|null,
+ *   langConfig: PatternDefinitions|null,
+ *   currentSelectionRange: { from: number, to: number }|null,
+ *   insertTextFunction: Function|null,
+ *   lang: string|null
+ * }}
+ */
 let currentScanState = {
   active: false, //To check if a scan is currently running
   type: null, // Type of pattern being scanned for
@@ -24,8 +41,8 @@ let currentScanState = {
 
 /**
  * Initiates a scan for patterns of a specific type within the ProseMirror editor.
- * @param {ProseMirrorMenu} proseMirrorMenu - The menu instance containing the editor view.
- * @param {string} enricherType - The key identifying the pattern type (e.g., 'heal', 'save', 'condition').
+ * @param {any} proseMirrorMenu - The menu instance containing the editor view.
+ * @param {keyof PatternDefinitions} enricherType - The key identifying the pattern type (e.g., 'heal', 'save', 'condition').
  * @param {Function} insertTextFunction - Function to insert text directly.
  */
 export async function startPatternScan(
@@ -36,7 +53,7 @@ export async function startPatternScan(
   // Prevents multiple simultaneous scans
   if (currentScanState.active) {
     ui.notifications.warn(
-      game.i18n.localize("DND.DETECT.SCAN_ACTIVE") ||
+      localize("DND.DETECT.SCAN_ACTIVE") ||
         "A pattern scan is already in progress.",
     );
     return;
@@ -100,7 +117,7 @@ export async function startPatternScan(
   // If configuration is missing, notifies user and exits
   if (!patternConfig || !patternConfig.pattern || !mapCheck) {
     ui.notifications.error(
-      game.i18n.format("DND.DETECT.NO_PATTERN_DEF", {
+      localize("DND.DETECT.NO_PATTERN_DEF", {
         type: enricherType,
         lang: lang,
       }) ||
@@ -123,7 +140,7 @@ export async function startPatternScan(
   };
 
   ui.notifications.info(
-    game.i18n.format("DND.DETECT.SCAN_STARTED", { type: enricherType }) ||
+    localize("DND.DETECT.SCAN_STARTED", { type: enricherType }) ||
       `Scanning for ${enricherType} patterns...`,
   );
 
@@ -801,7 +818,7 @@ async function findAndPromptNextMatch() {
   } else {
     // No more matches found in the document
     ui.notifications.info(
-      game.i18n.format("DND.DETECT.SCAN_COMPLETE", {
+      localize("DND.DETECT.SCAN_COMPLETE", {
         type: currentScanState.type,
       }) ||
         `Finished scanning. No more ${currentScanState.type} patterns found.`,
@@ -844,6 +861,8 @@ function cancelPatternScan() {
     patternConfig: null,
     langConfig: null,
     currentSelectionRange: null,
+    insertTextFunction: null,
+    lang: null,
   };
 }
 

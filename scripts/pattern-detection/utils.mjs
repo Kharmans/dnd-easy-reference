@@ -13,3 +13,15 @@ export function buildAlternationGroup(map) {
 
   return `(?:${escapedKeys.join("|")})`;
 }
+
+/**
+ * Universally localize things direct string IDs or data-driven string IDs.
+ * @param {string} stringId
+ * @param {Record<string, unknown>} [data]
+ * @returns {string}
+ */
+export function localize(stringId, data) {
+  return game.release.generation < 14 && data
+    ? game.i18n.format(stringId, data)
+    : game.i18n.localize(stringId, data);
+}

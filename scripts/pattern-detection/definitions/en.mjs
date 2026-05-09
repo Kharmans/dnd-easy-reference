@@ -1,4 +1,8 @@
-import { buildAlternationGroup } from '../utils.mjs';
+// @ts-check
+
+/** @import { PatternDefinitions } from '../../types/_types.mjs' */
+
+import { buildAlternationGroup } from "../utils.mjs";
 
 //Abilities
 const enAbilityMap = {
@@ -119,10 +123,6 @@ const enConditionMap = {
   blind: "blinded",
   deaf: "deafened",
   exhausted: "exhaustion",
-  frightened: "frightened",
-  grappled: "grappled",
-  incapacitated: "incapacitated",
-  invisible: "invisible",
   petrified: "petrified",
 };
 
@@ -365,6 +365,9 @@ const enAreaTargetTypeList = buildAlternationGroup(enAreaTargetTypeMap);
 const enSpellPropertyList = buildAlternationGroup(enSpellPropertyMap);
 const enCreatureTypeList = buildAlternationGroup(enCreatureTypeMap);
 
+/**
+ * @type {PatternDefinitions}
+ */
 export const enDefinitions = {
   abilityKeyMap: enAbilityMap,
   skillKeyMap: enSkillMap,
@@ -455,38 +458,38 @@ export const enDefinitions = {
   // All of the below matches the names from the corresponding maps
   condition: {
     pattern: new RegExp(String.raw`\b(${enConditionList})\b`, "gi"),
-    conditionNameGroup: 1,
+    nameGroup: 1,
   },
   rule: {
     pattern: new RegExp(String.raw`\b(${enRuleList})\b`, "gi"),
-    ruleNameGroup: 1,
+    nameGroup: 1,
   },
   weaponMastery: {
     pattern: new RegExp(String.raw`\b(${enWeaponMasteryList})\b`, "gi"),
-    masteryNameGroup: 1,
+    nameGroup: 1,
   },
   areaTargetType: {
     pattern: new RegExp(String.raw`\b(${enAreaTargetTypeList})\b`, "gi"),
-    areaNameGroup: 1,
+    nameGroup: 1,
   },
   spellProperty: {
     pattern: new RegExp(String.raw`\b(${enSpellPropertyList})\b`, "gi"),
-    propertyNameGroup: 1,
+    nameGroup: 1,
   },
   ability: {
     pattern: new RegExp(String.raw`\b(${enAbilityList})\b`, "gi"),
-    abilityNameGroup: 1,
+    nameGroup: 1,
   },
   skill: {
     pattern: new RegExp(String.raw`\b(${enSkillList})\b`, "gi"),
-    skillNameGroup: 1,
+    nameGroup: 1,
   },
   damageType: {
     pattern: new RegExp(String.raw`\b(${enDamageTypeList})\b`, "gi"),
-    damageTypeNameGroup: 1,
+    nameGroup: 1,
   },
   creatureType: {
     pattern: new RegExp(String.raw`\b(${enCreatureTypeList})\b`, "gi"),
-    typeNameGroup: 1,
+    nameGroup: 1,
   },
 };
