@@ -43,10 +43,10 @@
       "PROMPT_CONFIRM": "Converter este texto?",
       "BUTTON_CONFIRM": "Confirmar",
       "BUTTON_SKIP": "Pular",
-      "BUTTON_CANCEL": "Cancelar Pesquisa",
-      "SCAN_STARTED": "Pesquisando padrões de {type}...",
-      "SCAN_COMPLETE": "Pesquisa concluída. Nenhum outro padrão de {type} encontrado.",
-      "SCAN_ACTIVE": "Uma pesquisa de padrões já está em progresso.",
+      "BUTTON_CANCEL": "Cancelar Varredura",
+      "SCAN_STARTED": "Iniciando varredura de padrões {type}...",
+      "SCAN_COMPLETE": "Varredura concluída. Nenhum outro padrão de {type} encontrado.",
+      "SCAN_ACTIVE": "Uma varredura de padrões já está em andamento.",
       "NO_PATTERN_DEF": "Nenhuma definição de padrão encontrada para {type} no idioma {lang} ou em Inglês como alternativa.",
       "PROMPT_WARNING": "Verifique a seleção antes de confirmar."
     },
@@ -64,7 +64,7 @@
         "TITLE": "Fórmula de Ataque"
       },
       "AWARD": {
-        "SETTING_NAME": "Exibir Recompensa",
+        "SETTING_NAME": "Exibir Recompensas",
         "TITLE": "Recompensas"
       },
       "CHECKS": {
@@ -94,27 +94,27 @@
       },
       "DIALOG": "Configurar Enricher",
       "HEAL": {
-          "SETTING_NAME": "Exibir Fórmula de Cura",
-          "TITLE": "Fórmula de Cura"
+        "SETTING_NAME": "Exibir Fórmula de Cura",
+        "TITLE": "Fórmula de Cura"
       },
       "ITEMPROPERTIES": {
-          "SETTING_NAME": "Exibir Propriedades de Magia",
+        "SETTING_NAME": "Exibir Propriedades de Magia",
         "TITLE": "Propriedades de Magia"
       },
       "LOOKUP": {
-          "SETTING_NAME": "Exibir Consulta",
-          "TITLE": "Consulta"
+        "SETTING_NAME": "Exibir Consulta",
+        "TITLE": "Consulta"
       },
       "RULES": {
-          "SETTING_NAME": "Exibir Regras",
-          "TITLE": "Regras"
+        "SETTING_NAME": "Exibir Regras",
+        "TITLE": "Regras"
       },
       "SAVES": {
-          "SETTING_NAME": "Exibir Salvaguardas",
+        "SETTING_NAME": "Exibir Salvaguardas",
         "TITLE": "Salvaguardas"
       },
       "SKILLS": {
-          "SETTING_NAME": "Exibir Perícias",
+        "SETTING_NAME": "Exibir Perícias",
         "TITLE": "Perícias"
       },
       "STYLE": {
@@ -142,9 +142,9 @@
         "TREASURE_CONTENT": "Este é um bloco de tesouro.",
         "TREASURE_TITLE": "Tesouro"
       },
-      "TITLE": "D&D",
+      "TITLE": "D&D - Easy Reference",
       "TOOLS": {
-          "TITLE": "Ferramentas"
+        "TITLE": "Ferramentas"
       },
       "WEAPONMASTERIES": {
         "SETTING_NAME": "Exibir Masteries de Arma",
