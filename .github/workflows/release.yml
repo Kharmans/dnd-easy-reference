@@ -75,6 +75,7 @@ jobs:
         VERSION: ${{ github.event.release.tag_name }}
         COMPAT_MIN: ${{ steps.module.outputs.compat_min }}
         COMPAT_MAX: ${{ steps.module.outputs.compat_max }}
+        COMPAT_VERIFIED: ${{ steps.module.outputs.compat_verified }}
         RELEASE_PAGE: https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}
       run: |
         python3 -c "
@@ -95,6 +96,9 @@ jobs:
         title = os.environ.get('MODULE_TITLE', 'D&D Easy Reference') + ' v' + os.environ.get('VERSION', '')
         compat_min = os.environ.get('COMPAT_MIN', '')
         compat_max = os.environ.get('COMPAT_MAX', '')
+        verified = os.environ.get('COMPAT_VERIFIED', '')
+        compat_range = 'All' if not compat_min and not compat_max else f'{compat_min}-{compat_max}' if compat_min != compat_max and compat_max else f'{compat_min}+'
+        compat_text = f'{compat_range} (Verified {verified})'
         release_page = os.environ.get('RELEASE_PAGE', '')
         foundry_url = os.environ.get('FOUNDRY_URL', 'https://foundryvtt.com/packages/dnd-easy-reference')
 
@@ -105,7 +109,7 @@ jobs:
                 'url': release_page,
                 'description': notes,
                 'fields': [
-                    {'name': 'Core Compatibility', 'value': compat_min if compat_min == compat_max else f'{compat_min} - {compat_max}', 'inline': True},
+                    {'name': 'Core Compatibility', 'value': compat_text, 'inline': True},
                     {'name': 'Foundry Package', 'value': f'[Install from Foundry]({foundry_url})', 'inline': True}
                 ],
                 'color': 16750848
